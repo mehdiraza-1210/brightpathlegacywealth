@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -863,6 +863,640 @@ html, body {
   color: rgba(255,255,255,.35);
   margin: 0;
 }
+
+/* ==========================================================================
+   CFS CALCULATOR, TEASER, GATED FORM, FULL REPORT & BOOKING STYLES
+   Scoped strictly under #cfs-root for GoHighLevel compatibility
+   ========================================================================== */
+
+#cfs-root .cfs-calculator-section {
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 4vw, 2.5rem);
+  background: var(--off-white);
+  border-bottom: 1px solid var(--grey-light);
+  position: relative;
+}
+
+#cfs-root .cfs-calc-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+#cfs-root .cfs-calc-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--grey-light);
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  margin-top: 1.5rem;
+}
+
+#cfs-root .cfs-calc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  #cfs-root .cfs-calc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#cfs-root .cfs-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#cfs-root .cfs-input-group--full {
+  grid-column: 1 / -1;
+}
+
+#cfs-root .cfs-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#cfs-root .cfs-label-val {
+  color: var(--gold-dark);
+  font-size: 1.05rem;
+}
+
+#cfs-root .cfs-hint {
+  font-size: 0.8rem;
+  color: var(--grey-text);
+  margin: 0;
+}
+
+#cfs-root .cfs-range-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--grey-light);
+  outline: none;
+  -webkit-appearance: none;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+#cfs-root .cfs-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--white);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+#cfs-root .cfs-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+#cfs-root .cfs-btn-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+#cfs-root .cfs-preset-btn {
+  background: var(--off-white);
+  border: 1px solid var(--grey-light);
+  color: var(--green);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#cfs-root .cfs-preset-btn:hover,
+#cfs-root .cfs-preset-btn.active {
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
+}
+
+#cfs-root .cfs-select-box {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--grey-light);
+  border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.95rem;
+  color: var(--green);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+#cfs-root .cfs-select-box:focus {
+  border-color: var(--gold);
+}
+
+#cfs-root .cfs-calc-action-wrap {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+/* Teaser Results Box */
+#cfs-root .cfs-teaser-box {
+  display: none;
+  margin-top: 2rem;
+  background: linear-gradient(135deg, #052618 0%, #0b3e27 100%);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--white);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  animation: cfsFadeIn 0.5s ease-out;
+}
+
+@keyframes cfsFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#cfs-root .cfs-teaser-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#cfs-root .cfs-teaser-pill {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--green-dark);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  border-radius: var(--pill);
+  margin-bottom: 0.75rem;
+}
+
+#cfs-root .cfs-teaser-score-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 6px solid var(--gold);
+  background: rgba(255,255,255,0.06);
+  margin: 0.5rem auto;
+  box-shadow: 0 0 30px rgba(201,151,38,0.3);
+}
+
+#cfs-root .cfs-score-num {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--gold-light);
+}
+
+#cfs-root .cfs-score-max {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+}
+
+#cfs-root .cfs-teaser-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  #cfs-root .cfs-teaser-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+#cfs-root .cfs-stat-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+#cfs-root .cfs-stat-title {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+#cfs-root .cfs-stat-num {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+#cfs-root .cfs-stat-num--alert {
+  color: #ffb86c;
+}
+
+#cfs-root .cfs-stat-num--gold {
+  color: var(--gold-light);
+}
+
+#cfs-root .cfs-teaser-copy {
+  text-align: center;
+  font-size: 1rem;
+  color: #e2e8e4;
+  max-width: 720px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.6;
+}
+
+#cfs-root .cfs-teaser-curiosity {
+  background: rgba(201,151,38,0.15);
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.92rem;
+  color: #fff;
+  text-align: left;
+}
+
+/* Inquiry Form (Gate to Full Report) */
+#cfs-root .cfs-gate-form-wrap {
+  display: none;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 2px solid var(--gold);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  margin-top: 1.75rem;
+  color: var(--green);
+  box-shadow: var(--shadow-lg);
+  animation: cfsFadeIn 0.5s ease-out;
+}
+
+#cfs-root .cfs-gate-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+#cfs-root .cfs-gate-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 0.35rem;
+}
+
+#cfs-root .cfs-gate-sub {
+  font-size: 0.92rem;
+  color: var(--grey-text);
+  margin: 0;
+}
+
+#cfs-root .cfs-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  #cfs-root .cfs-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #cfs-root .cfs-form-group--full {
+    grid-column: 1 / -1;
+  }
+}
+
+#cfs-root .cfs-form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid var(--grey-light);
+  border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background: var(--off-white);
+  color: var(--green);
+}
+
+#cfs-root .cfs-form-input:focus {
+  border-color: var(--gold);
+  background: var(--white);
+}
+
+#cfs-root .cfs-consent-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  font-size: 0.76rem;
+  color: var(--grey-text);
+  line-height: 1.45;
+}
+
+#cfs-root .cfs-consent-wrap input[type="checkbox"] {
+  margin-top: 0.15rem;
+  accent-color: var(--gold);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Full Report Section */
+#cfs-root .cfs-full-report {
+  display: none;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 2px solid var(--gold);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  margin-top: 2rem;
+  box-shadow: var(--shadow-lg);
+  animation: cfsFadeIn 0.5s ease-out;
+}
+
+#cfs-root .cfs-report-header {
+  border-bottom: 2px solid var(--gold-pale);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+#cfs-root .cfs-report-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: var(--green);
+  margin: 0;
+}
+
+#cfs-root .cfs-report-badge {
+  background: var(--gold-pale);
+  color: var(--gold-dark);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--gold-light);
+}
+
+/* Showdown Comparison Matrix Table */
+#cfs-root .cfs-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--grey-light);
+  box-shadow: var(--shadow-sm);
+}
+
+#cfs-root .cfs-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+#cfs-root .cfs-matrix-table th,
+#cfs-root .cfs-matrix-table td {
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--grey-light);
+  vertical-align: top;
+}
+
+#cfs-root .cfs-matrix-table thead th {
+  background: var(--green);
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+#cfs-root .cfs-matrix-table thead th.th-highlight {
+  background: #06311e;
+  border-top: 4px solid var(--gold);
+  color: var(--gold-light);
+}
+
+#cfs-root .cfs-matrix-table tbody tr:nth-child(even) {
+  background: var(--off-white);
+}
+
+#cfs-root .cfs-matrix-table tbody tr:hover {
+  background: var(--gold-pale);
+}
+
+#cfs-root .cfs-matrix-table td.td-highlight {
+  background: rgba(201,151,38,0.06);
+  font-weight: 600;
+  color: var(--green);
+  border-left: 2px solid rgba(201,151,38,0.3);
+  border-right: 2px solid rgba(201,151,38,0.3);
+}
+
+#cfs-root .cfs-feature-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: var(--green);
+}
+
+#cfs-root .cfs-tag-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.35rem;
+}
+
+#cfs-root .cfs-tag-badge--bad {
+  background: #ffe8e6;
+  color: #c5221f;
+}
+
+#cfs-root .cfs-tag-badge--mid {
+  background: #fef7e0;
+  color: #b06000;
+}
+
+#cfs-root .cfs-tag-badge--good {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+/* Feature Deep-Dive Cards */
+#cfs-root .cfs-pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+  #cfs-root .cfs-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+#cfs-root .cfs-pillar-card {
+  background: var(--off-white);
+  border-radius: 8px;
+  border-left: 4px solid var(--gold);
+  padding: 1.25rem 1.5rem;
+}
+
+#cfs-root .cfs-pillar-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--green);
+  margin: 0 0 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#cfs-root .cfs-pillar-desc {
+  font-size: 0.88rem;
+  color: var(--grey-text);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* Specialist Appointment Booking Box */
+#cfs-root .cfs-booking-box {
+  background: linear-gradient(135deg, #0b3e27 0%, #052618 100%);
+  border-radius: var(--radius);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  color: var(--white);
+  margin: 2.5rem 0 1.5rem 0;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gold);
+}
+
+#cfs-root .cfs-booking-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.3rem, 3.5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+}
+
+#cfs-root .cfs-booking-sub {
+  font-size: 0.95rem;
+  color: #e2e8e4;
+  max-width: 680px;
+  margin: 0 auto 1.75rem auto;
+  line-height: 1.6;
+}
+
+#cfs-root .cfs-booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#cfs-root .cfs-booking-btn {
+  background: var(--gold);
+  color: var(--green-dark);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0.9rem 2rem;
+  border-radius: var(--pill);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(201,151,38,0.35);
+  cursor: pointer;
+  border: none;
+}
+
+#cfs-root .cfs-booking-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,151,38,0.45);
+}
+
+#cfs-root .cfs-call-btn {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255,255,255,0.4);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--pill);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+#cfs-root .cfs-call-btn:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Mandatory Compliance Card */
+#cfs-root .cfs-compliance-card {
+  background: var(--off-white);
+  border: 1px solid var(--grey-light);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.75rem;
+  font-size: 0.78rem;
+  color: var(--grey-text);
+  line-height: 1.6;
+}
+
+#cfs-root .cfs-compliance-card h5 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.84rem;
+  color: var(--green);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#cfs-root .cfs-compliance-card p {
+  margin: 0 0 0.5rem 0;
+}
+
+#cfs-root .cfs-compliance-card p:last-child {
+  margin-bottom: 0;
+}
 </style>
 
 <div id="cfs-root">
@@ -909,8 +1543,7 @@ html, body {
 
         <div class="cfs-btn-wrap">
           <a
-            href="#"
-            id="cta-hero"
+            href="#cfs-calculator" id="cta-hero"
             class="cfs-btn"
             data-step="calculator"
             role="button"
@@ -951,9 +1584,473 @@ html, body {
     <span class="cfs-trust-disclosure">
       Education &bull; Opportunity &bull; Legacy &bull; A Brighter Tomorrow | Strategic Wealth Planning
     </span>
-  </div>
+  
+  <!-- Interactive Calculator & Showdown Funnel Section -->
+  <section class="cfs-calculator-section" id="cfs-calculator" aria-label="College Funding Showdown Calculator">
+    <div class="cfs-calc-container">
+      
+      <div class="cfs-section-intro" style="margin-bottom: 1rem;">
+        <p class="cfs-eyebrow">Interactive Self-Service Analysis</p>
+        <h2 class="cfs-h2">The College Funding Showdown Calculator</h2>
+        <p>
+          Enter your child's timeline and savings capacity to instantly generate your 
+          <strong>College Funding Score</strong> and uncover your projected funding gap in 60 seconds.
+        </p>
+      </div>
+
+      <!-- Step 1: Calculator Inputs Card -->
+      <div class="cfs-calc-card" id="cfs-calc-input-card">
+        <form id="cfs-calculator-form" onsubmit="return false;">
+          <div class="cfs-calc-grid">
+            
+            <!-- Child's Age Slider -->
+            <div class="cfs-input-group cfs-input-group--full">
+              <label for="cfs-child-age" class="cfs-label">
+                <span>Child's Current Age</span>
+                <span class="cfs-label-val" id="cfs-age-display">Age 5 (Starts College in 2039)</span>
+              </label>
+              <input 
+                type="range" 
+                id="cfs-child-age" 
+                class="cfs-range-slider" 
+                min="0" 
+                max="17" 
+                value="5" 
+                aria-label="Child Current Age"
+              />
+              <p class="cfs-hint">Time Horizon: <strong id="cfs-years-left">13 years</strong> until college enrollment (Age 18).</p>
+            </div>
+
+            <!-- Current Savings -->
+            <div class="cfs-input-group">
+              <label for="cfs-current-savings" class="cfs-label">
+                <span>Current College Savings ($)</span>
+                <span class="cfs-label-val" id="cfs-savings-display">$10,000</span>
+              </label>
+              <input 
+                type="number" 
+                id="cfs-current-savings" 
+                class="cfs-form-input" 
+                value="10000" 
+                min="0" 
+                step="500"
+              />
+              <div class="cfs-btn-presets" id="cfs-savings-presets">
+                <button type="button" class="cfs-preset-btn" data-val="0">$0</button>
+                <button type="button" class="cfs-preset-btn" data-val="5000">$5k</button>
+                <button type="button" class="cfs-preset-btn active" data-val="10000">$10k</button>
+                <button type="button" class="cfs-preset-btn" data-val="25000">$25k</button>
+                <button type="button" class="cfs-preset-btn" data-val="50000">$50k</button>
+              </div>
+            </div>
+
+            <!-- Monthly Contribution -->
+            <div class="cfs-input-group">
+              <label for="cfs-monthly-contrib" class="cfs-label">
+                <span>Monthly Contribution ($/mo)</span>
+                <span class="cfs-label-val" id="cfs-contrib-display">$350/mo</span>
+              </label>
+              <input 
+                type="number" 
+                id="cfs-monthly-contrib" 
+                class="cfs-form-input" 
+                value="350" 
+                min="0" 
+                step="25"
+              />
+              <div class="cfs-btn-presets" id="cfs-contrib-presets">
+                <button type="button" class="cfs-preset-btn" data-val="150">$150</button>
+                <button type="button" class="cfs-preset-btn active" data-val="350">$350</button>
+                <button type="button" class="cfs-preset-btn" data-val="600">$600</button>
+                <button type="button" class="cfs-preset-btn" data-val="1000">$1,000</button>
+              </div>
+            </div>
+
+            <!-- Target School Type / Cost -->
+            <div class="cfs-input-group cfs-input-group--full">
+              <label for="cfs-school-type" class="cfs-label">
+                <span>Estimated Target 4-Year College Cost Benchmark</span>
+              </label>
+              <select id="cfs-school-type" class="cfs-select-box">
+                <option value="110000" selected>In-State Public 4-Year University (~$110,000 total / ~$27.5k/yr)</option>
+                <option value="180000">Regional / Out-of-State Public University (~$180,000 total / ~$45k/yr)</option>
+                <option value="250000">Private Non-Profit University (~$250,000 total / ~$62.5k/yr)</option>
+                <option value="360000">Elite / Selective Private University (~$360,000 total / ~$90k/yr)</option>
+              </select>
+              <p class="cfs-hint">Benchmark estimates reflect current 4-year tuition, fees, room, and board with projected cost inflation.</p>
+            </div>
+
+            <!-- Soft Email Capture -->
+            <div class="cfs-input-group cfs-input-group--full">
+              <label class="cfs-consent-wrap">
+                <input type="checkbox" id="cfs-soft-optin" />
+                <span>Save my calculator inputs and email me my preliminary results (Optional)</span>
+              </label>
+            </div>
+
+          </div>
+
+          <!-- Calculate Action Button -->
+          <div class="cfs-calc-action-wrap">
+            <button type="button" id="cfs-btn-calculate" class="cfs-btn">
+              <span>Calculate My College Funding Score</span>
+              <span class="cfs-btn-arrow" aria-hidden="true">&rarr;</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 2: Teaser Results (Immediate & Ungated) -->
+      <div class="cfs-teaser-box" id="cfs-teaser-box" role="region" aria-live="polite">
+        <div class="cfs-teaser-header">
+          <span class="cfs-teaser-pill">Preliminary Evaluation</span>
+          <h3 style="font-family:'Montserrat',sans-serif; margin:0 0 0.5rem 0; font-size:1.6rem; color:#fff;">
+            Your College Funding Scorecard
+          </h3>
+          <div class="cfs-teaser-score-badge">
+            <span class="cfs-score-num" id="cfs-teaser-score-val">74</span>
+            <span class="cfs-score-max">OUT OF 100</span>
+          </div>
+          <p id="cfs-readiness-status" style="font-weight:700; color:var(--gold-light); font-size:1.05rem; margin:0.5rem 0 0 0;">
+            Moderate Readiness — Funding Gap Identified
+          </p>
+        </div>
+
+        <div class="cfs-teaser-stats">
+          <div class="cfs-stat-card">
+            <div class="cfs-stat-title">Estimated 4-Year Cost</div>
+            <div class="cfs-stat-num" id="cfs-stat-target">$110,000</div>
+          </div>
+          <div class="cfs-stat-card">
+            <div class="cfs-stat-title">Projected Savings</div>
+            <div class="cfs-stat-num cfs-stat-num--gold" id="cfs-stat-projected">$86,400</div>
+          </div>
+          <div class="cfs-stat-card">
+            <div class="cfs-stat-title">Projected Funding Gap</div>
+            <div class="cfs-stat-num cfs-stat-num--alert" id="cfs-stat-gap">$23,600</div>
+          </div>
+        </div>
+
+        <p class="cfs-teaser-copy" id="cfs-teaser-narrative">
+          Based on your inputs, you have a projected savings gap of <strong id="cfs-narrative-gap">$23,600</strong>. 
+          While traditional 529 plans lock your funds into rigid education-only mandates with market risk, and Trump Accounts face strict statutory limits, 
+          the <strong>Flexible Insurance Option</strong> offers a protected alternative that builds wealth with zero market downside loss.
+        </p>
+
+        <div class="cfs-teaser-curiosity">
+          <strong>Curiosity Insight:</strong> Did you know cash-value life insurance is <em>completely exempt</em> from the FAFSA financial aid formula, while 529 plans can reduce financial aid eligibility by up to 5.64% per year?
+        </div>
+
+        <p style="font-size:0.75rem; color:rgba(255,255,255,0.65); text-align:center; margin-bottom:1.5rem;">
+          *This is a hypothetical illustration based on an assumed 6.0% illustrative annual rate of return. It is not a guarantee of future performance. Actual values will vary.
+        </p>
+
+        <div style="text-align: center;">
+          <button type="button" id="cfs-btn-unlock-gate" class="cfs-btn">
+            <span>Unlock Your Full 3-Way Showdown Report</span>
+            <span class="cfs-btn-arrow" aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Inquiry Form (Gated Contact Capture) -->
+      <div class="cfs-gate-form-wrap" id="cfs-gate-form-wrap">
+        <div class="cfs-gate-header">
+          <span class="cfs-tag-badge cfs-tag-badge--good" style="margin-bottom:0.5rem;">Final Step &bull; Instant Access</span>
+          <h3 class="cfs-gate-title">Unlock Your Personalized Showdown Report</h3>
+          <p class="cfs-gate-sub">
+            Where should we send your complete side-by-side comparison across Trump Accounts, 529 Plans, and the Flexible Insurance Option?
+          </p>
+        </div>
+
+        <form id="cfs-inquiry-form" onsubmit="return false;">
+          <div class="cfs-form-grid">
+            <div class="cfs-form-group">
+              <label for="cfs-user-name" class="cfs-label">Full Name *</label>
+              <input type="text" id="cfs-user-name" class="cfs-form-input" placeholder="e.g. Sarah Jenkins" required />
+            </div>
+
+            <div class="cfs-form-group">
+              <label for="cfs-user-email" class="cfs-label">Email Address *</label>
+              <input type="email" id="cfs-user-email" class="cfs-form-input" placeholder="sarah@example.com" required />
+            </div>
+
+            <div class="cfs-form-group">
+              <label for="cfs-user-phone" class="cfs-label">Phone Number *</label>
+              <input type="tel" id="cfs-user-phone" class="cfs-form-input" placeholder="(555) 000-0000" required />
+            </div>
+
+            <div class="cfs-form-group">
+              <label for="cfs-user-concern" class="cfs-label">What is your biggest college funding concern?</label>
+              <select id="cfs-user-concern" class="cfs-select-box">
+                <option value="Market Risk">Market volatility wiping out savings right before college</option>
+                <option value="Non-College Penalties">Penalties/taxes if child gets a scholarship or skips college</option>
+                <option value="Financial Aid Impact">Losing financial aid/FAFSA eligibility due to 529 assets</option>
+                <option value="Not Saving Enough">Falling short of high future tuition bills</option>
+                <option value="Lack of Flexibility">Wanting funds to also be usable for a home, business, or life</option>
+              </select>
+            </div>
+
+            <div class="cfs-form-group--full">
+              <label class="cfs-consent-wrap">
+                <input type="checkbox" id="cfs-tcpa-consent" checked required />
+                <span>
+                  I consent to receive text messages, phone calls, and emails regarding my College Funding Showdown Report from BrightPath Legacy Wealth Corporation at the number provided. Message &amp; data rates may apply. Message frequency varies. Reply STOP to cancel. I acknowledge that I have read the Privacy Policy and Disclosures.
+                </span>
+              </label>
+            </div>
+
+            <div class="cfs-form-group--full" style="text-align: center; margin-top: 0.5rem;">
+              <button type="button" id="cfs-btn-submit-inquiry" class="cfs-btn">
+                <span>View My Full 3-Way Showdown Report</span>
+                <span class="cfs-btn-arrow" aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 4: Full Report Delivery (Rendered on Screen) -->
+      <div class="cfs-full-report" id="cfs-full-report">
+        
+        <div class="cfs-report-header">
+          <div>
+            <h3 class="cfs-report-title">The Ultimate 3-Way Showdown Report</h3>
+            <p style="color:var(--grey-text); margin:0.35rem 0 0 0; font-size:0.95rem;">
+              Prepared for: <strong id="cfs-report-client-name">Valued Family</strong> &bull; Personalized Strategy Analysis
+            </p>
+          </div>
+          <div class="cfs-report-badge">
+            Score: <span id="cfs-report-score-display">74</span>/100 &bull; Verified
+          </div>
+        </div>
+
+        <!-- Executive Summary Recap -->
+        <div style="background:var(--gold-pale); border:1px solid rgba(201,151,38,0.3); border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:2rem;">
+          <h4 style="font-family:'Montserrat',sans-serif; color:var(--green); margin:0 0 0.4rem 0; font-size:1.1rem;">
+            Personalized Executive Summary
+          </h4>
+          <p style="margin:0; font-size:0.92rem; color:var(--green); line-height:1.6;" id="cfs-report-summary-text">
+            For your child (<span id="cfs-rep-age">Age 5</span>, entering college in <span id="cfs-rep-year">2039</span>), the estimated 4-year cost is 
+            <strong id="cfs-rep-target">$110,000</strong>. At your current savings trajectory of <strong id="cfs-rep-monthly">$350/mo</strong>, 
+            your projected accumulation is <strong id="cfs-rep-projected">$86,400</strong>, leaving an estimated gap of <strong id="cfs-rep-gap">$23,600</strong>.
+          </p>
+        </div>
+
+        <!-- 3-Way Side-by-Side Comparison Matrix Table -->
+        <div class="cfs-table-wrap">
+          <table class="cfs-matrix-table" aria-label="College Funding Comparison Table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Decision Criteria</th>
+                <th style="width: 25%;">1. Trump Account</th>
+                <th style="width: 25%;">2. Traditional 529 / ESA</th>
+                <th style="width: 25%;" class="th-highlight">3. Flexible Insurance Option &#9733;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cfs-feature-label">
+                  Eligible Use of Funds
+                  <div class="cfs-hint">Where can money be spent?</div>
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--bad">Strict Rules</span><br />
+                  Limited eligible categories governed by emerging federal guidelines.
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--bad">Education Only</span><br />
+                  Qualified higher-education costs only. 10% IRS penalty + taxes on non-qualifying use.
+                </td>
+                <td class="td-highlight">
+                  <span class="cfs-tag-badge cfs-tag-badge--good">100% Unrestricted</span><br />
+                  Use for college, vocational school, starting a business, first home down payment, or retirement.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cfs-feature-label">
+                  Growth &amp; Tax Status
+                  <div class="cfs-hint">IRS tax treatment</div>
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--mid">Subject to Terms</span><br />
+                  New program rules subject to statutory changes and policy oversight.
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--good">Tax-Deferred</span><br />
+                  Tax-free ONLY if used for qualified education expenses. Non-qualifying earnings taxed as regular income.
+                </td>
+                <td class="td-highlight">
+                  <span class="cfs-tag-badge cfs-tag-badge--good">Triple Tax Advantage</span><br />
+                  Tax-deferred growth, tax-free distributions/loans (IRC &sect; 7702), and tax-free death benefit to heirs.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cfs-feature-label">
+                  Market Risk &amp; Protection
+                  <div class="cfs-hint">Downside loss exposure</div>
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--mid">Market Dependent</span><br />
+                  Tied to government portfolio or fund performance.
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--bad">Full Market Exposure</span><br />
+                  If the stock market crashes right before your child attends, your college savings drop with it.
+                </td>
+                <td class="td-highlight">
+                  <span class="cfs-tag-badge cfs-tag-badge--good">Contractual 0% Floor</span><br />
+                  Gains linked to major index performance (e.g. S&amp;P 500) with guaranteed protection against market loss years.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cfs-feature-label">
+                  Financial Aid (FAFSA) Impact
+                  <div class="cfs-hint">Does it reduce aid?</div>
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--mid">Assessed Asset</span><br />
+                  Subject to federal formula evaluation for expected family contribution.
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--bad">Hurts Aid Eligibility</span><br />
+                  Counted as a parental asset on the FAFSA (up to 5.64% per year directly reduces need-based grants).
+                </td>
+                <td class="td-highlight">
+                  <span class="cfs-tag-badge cfs-tag-badge--good">100% FAFSA Exempt</span><br />
+                  Cash value life insurance is legally invisible on federal student aid formulas, maximizing grant opportunities.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cfs-feature-label">
+                  Non-College / Scholarship Scenarios
+                  <div class="cfs-hint">What if child doesn't attend?</div>
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--mid">Restricted Options</span><br />
+                  Limited rollover options and potential clawbacks.
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--bad">10% Penalty + Tax</span><br />
+                  Money is trapped. Non-education withdrawals incur a 10% penalty plus ordinary income tax.
+                </td>
+                <td class="td-highlight">
+                  <span class="cfs-tag-badge cfs-tag-badge--good">Zero Penalty</span><br />
+                  Keep the funds growing tax-free, transfer ownership to child at graduation, or redirect into retirement.
+                </td>
+              </tr>
+
+              <tr>
+                <td class="cfs-feature-label">
+                  Parent Safety Net &amp; Protection
+                  <div class="cfs-hint">What if tragedy strikes?</div>
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--bad">No Protection</span><br />
+                  Savings balance only.
+                </td>
+                <td>
+                  <span class="cfs-tag-badge cfs-tag-badge--bad">No Protection</span><br />
+                  If a parent passes away prematurely, future 529 savings halt immediately.
+                </td>
+                <td class="td-highlight">
+                  <span class="cfs-tag-badge cfs-tag-badge--good">Self-Completing Fund</span><br />
+                  Includes life insurance death benefit and living benefits (critical/chronic illness) to ensure funding happens.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Value Pillar Breakdown Cards -->
+        <div class="cfs-section-intro" style="margin: 2rem 0 1rem 0;">
+          <h4 class="cfs-h2" style="font-size: 1.4rem;">Why Families Choose the Flexible Insurance Option</h4>
+        </div>
+
+        <div class="cfs-pillars-grid">
+          <div class="cfs-pillar-card">
+            <h5 class="cfs-pillar-title">&#128737;&#65039; Zero Market Downside</h5>
+            <p class="cfs-pillar-desc">
+              Your gains are locked in annually. When the index rises, your cash value earns interest up to a cap. When the market drops, your floor is 0% &mdash; preventing negative years right before college tuition is due.
+            </p>
+          </div>
+
+          <div class="cfs-pillar-card">
+            <h5 class="cfs-pillar-title">&#127891; 100% FAFSA Invisibility</h5>
+            <p class="cfs-pillar-desc">
+              Unlike 529 plans that reduce federal financial aid eligibility, the Higher Education Act exempts life insurance cash values from the Federal Methodology financial aid formula entirely.
+            </p>
+          </div>
+
+          <div class="cfs-pillar-card">
+            <h5 class="cfs-pillar-title">&#128275; Complete Freedom of Use</h5>
+            <p class="cfs-pillar-desc">
+              If your child earns a scholarship, chooses trade school, starts a company, or buys their first home, your funds are never penalized. You retain complete control over every dollar.
+            </p>
+          </div>
+
+          <div class="cfs-pillar-card">
+            <h5 class="cfs-pillar-title">&#128176; Tax-Free Lifetime Access</h5>
+            <p class="cfs-pillar-desc">
+              Through properly structured policy loans and withdrawals under Internal Revenue Code Section 7702, you can access accumulated cash value 100% free of federal income tax.
+            </p>
+          </div>
+        </div>
+
+        <!-- Appointment Booking Module -->
+        <div class="cfs-booking-box">
+          <h4 class="cfs-booking-title">Talk to a College Funding Specialist</h4>
+          <p class="cfs-booking-sub">
+            Every family's budget, child's age, and educational aspirations are distinct. Schedule a complimentary 1-on-1 strategy call with a licensed BrightPath professional to review your exact policy illustrations.
+          </p>
+
+          <div class="cfs-booking-actions">
+            <a 
+              href="https://api.leadconnectorhq.com/widget/booking" 
+              id="cfs-book-calendar-link" 
+              class="cfs-booking-btn" 
+              target="_blank" 
+              rel="noopener"
+            >
+              <span>Schedule 1-on-1 Strategy Call</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a href="tel:+18005550199" class="cfs-call-btn">
+              <span>&#128222; Call (800) 555-0199</span>
+            </a>
+          </div>
+
+          <p style="font-size:0.75rem; color:rgba(255,255,255,0.65); margin:1.25rem 0 0 0;">
+            100% Free Consultation &bull; No Obligation &bull; Two-way Advisor Calendar Sync
+          </p>
+        </div>
+
+        <!-- Required Compliance Disclosures Card -->
+        <div class="cfs-compliance-card">
+          <h5>Required Compliance &amp; Illustrative Disclosures</h5>
+          <p>
+            <strong>Hypothetical Illustration Notice:</strong> This comparison and calculator tool provide hypothetical illustrations based on an assumed 6.0% illustrative annual rate of return. It is not a guarantee of future performance. Actual policy values and growth will vary based on premiums paid, policy charges, cost of insurance, and actual (non-guaranteed) performance. See your carrier’s official policy illustration for guaranteed and non-guaranteed values.
+          </p>
+          <p>
+            <strong>Non-Guaranteed Features &amp; Advice Limitation:</strong> BrightPath Legacy Wealth Corporation professionals hold insurance licenses. This campaign and report are governed by state insurance advertising rules (following NAIC Life Insurance Illustrations and Advertisements Regulations) and evaluate general structural features &mdash; flexibility, access, control, and tax treatment &mdash; rather than investment performance. This material does not constitute securities, investment, tax, or legal advice.
+          </p>
+          <p>
+            <strong>Program Rules:</strong> Comparative statements regarding Trump Accounts and 529 plans reflect general provisions and should be verified against current federal and state statutes prior to final financial decisions.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 
   <!-- Comparison Section -->
+
   <section class="cfs-compare" aria-label="Compare college-funding options">
     <div class="cfs-section-intro cfs-fade">
       <p class="cfs-eyebrow">Side-by-Side Comparison</p>
@@ -1019,8 +2116,7 @@ html, body {
 
     <div class="cfs-btn-wrap cfs-btn-wrap--center">
       <a
-        href="#"
-        id="cta-secondary"
+        href="#cfs-calculator" id="cta-secondary"
         class="cfs-btn"
         data-step="calculator"
         role="button"
@@ -1085,6 +2181,210 @@ html, body {
 
     <p class="cfs-footer-copy">&copy; 2026 BrightPath Legacy Wealth Corporation. All rights reserved.</p>
   </footer>
+
+<script>
+(function() {
+  // Elements
+  var ageSlider = document.getElementById('cfs-child-age');
+  var ageDisplay = document.getElementById('cfs-age-display');
+  var yearsLeftDisplay = document.getElementById('cfs-years-left');
+  var savingsInput = document.getElementById('cfs-current-savings');
+  var savingsDisplay = document.getElementById('cfs-savings-display');
+  var contribInput = document.getElementById('cfs-monthly-contrib');
+  var contribDisplay = document.getElementById('cfs-contrib-display');
+  var schoolSelect = document.getElementById('cfs-school-type');
+
+  var btnCalc = document.getElementById('cfs-btn-calculate');
+  var teaserBox = document.getElementById('cfs-teaser-box');
+  var btnUnlockGate = document.getElementById('cfs-btn-unlock-gate');
+  var gateFormWrap = document.getElementById('cfs-gate-form-wrap');
+  var btnSubmitInquiry = document.getElementById('cfs-btn-submit-inquiry');
+  var fullReport = document.getElementById('cfs-full-report');
+
+  if (!ageSlider || !btnCalc) return;
+
+  var currentYear = 2026;
+
+  // Format currency helper
+  function formatMoney(num) {
+    return '$' + Math.round(num).toLocaleString();
+  }
+
+  // Update Age and Timeline
+  function updateAge() {
+    var age = parseInt(ageSlider.value, 10);
+    var yearsToCollege = Math.max(1, 18 - age);
+    var startYear = currentYear + yearsToCollege;
+    ageDisplay.textContent = 'Age ' + age + ' (Starts College in ' + startYear + ')';
+    yearsLeftDisplay.textContent = yearsToCollege + ' year' + (yearsToCollege === 1 ? '' : 's');
+  }
+
+  ageSlider.addEventListener('input', updateAge);
+
+  // Update Savings
+  function updateSavings() {
+    var val = parseFloat(savingsInput.value) || 0;
+    savingsDisplay.textContent = formatMoney(val);
+  }
+  savingsInput.addEventListener('input', updateSavings);
+
+  // Update Monthly Contribution
+  function updateContrib() {
+    var val = parseFloat(contribInput.value) || 0;
+    contribDisplay.textContent = formatMoney(val) + '/mo';
+  }
+  contribInput.addEventListener('input', updateContrib);
+
+  // Presets click listeners
+  function setupPresets(containerId, targetInput, updateFn) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    var btns = container.querySelectorAll('.cfs-preset-btn');
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        btns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        targetInput.value = btn.getAttribute('data-val');
+        updateFn();
+      });
+    });
+  }
+
+  setupPresets('cfs-savings-presets', savingsInput, updateSavings);
+  setupPresets('cfs-contrib-presets', contribInput, updateContrib);
+
+  // Calculation Logic (Section 4.2 of Proposal)
+  function calculateShowdown() {
+    var age = parseInt(ageSlider.value, 10);
+    var years = Math.max(1, 18 - age);
+    var months = years * 12;
+    var currentSavings = parseFloat(savingsInput.value) || 0;
+    var monthly = parseFloat(contribInput.value) || 0;
+    var targetCost = parseFloat(schoolSelect.value) || 110000;
+
+    // Assumed illustrative annual return: 6.0% compounded monthly
+    var r = 0.06;
+    var i = r / 12;
+
+    // Future value of lump sum savings
+    var fvSavings = currentSavings * Math.pow(1 + i, months);
+
+    // Future value of monthly contributions annuity
+    var fvContrib = 0;
+    if (monthly > 0 && i > 0) {
+      fvContrib = monthly * ((Math.pow(1 + i, months) - 1) / i) * (1 + i);
+    }
+
+    var totalProjected = Math.round(fvSavings + fvContrib);
+    var gap = Math.max(0, targetCost - totalProjected);
+
+    // Score: 0 - 100 marketing engagement score
+    var fundedRatio = totalProjected / targetCost;
+    var score = Math.round(fundedRatio * 100);
+    if (score < 18) score = 18;
+    if (score > 98) score = 98;
+
+    return {
+      age: age,
+      years: years,
+      startYear: currentYear + years,
+      currentSavings: currentSavings,
+      monthly: monthly,
+      targetCost: targetCost,
+      totalProjected: totalProjected,
+      gap: gap,
+      score: score
+    };
+  }
+
+  // Calculate Button Click -> Reveal Teaser Results
+  btnCalc.addEventListener('click', function() {
+    var res = calculateShowdown();
+
+    document.getElementById('cfs-teaser-score-val').textContent = res.score;
+    document.getElementById('cfs-stat-target').textContent = formatMoney(res.targetCost);
+    document.getElementById('cfs-stat-projected').textContent = formatMoney(res.totalProjected);
+    document.getElementById('cfs-stat-gap').textContent = formatMoney(res.gap);
+    document.getElementById('cfs-narrative-gap').textContent = formatMoney(res.gap);
+
+    var statusEl = document.getElementById('cfs-readiness-status');
+    if (res.score >= 80) {
+      statusEl.textContent = 'Solid Trajectory — Optimization & Tax Strategy Needed';
+      statusEl.style.color = '#70c896';
+    } else if (res.score >= 50) {
+      statusEl.textContent = 'Moderate Readiness — Substantial Funding Gap Identified';
+      statusEl.style.color = 'var(--gold-light)';
+    } else {
+      statusEl.textContent = 'Critical Funding Gap — Immediate Restructuring Advised';
+      statusEl.style.color = '#ffb86c';
+    }
+
+    teaserBox.style.display = 'block';
+    teaserBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  // Unlock Gate Button Click -> Reveal Form
+  btnUnlockGate.addEventListener('click', function() {
+    gateFormWrap.style.display = 'block';
+    gateFormWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  // Submit Inquiry Form -> Reveal Full Report
+  btnSubmitInquiry.addEventListener('click', function() {
+    var nameInput = document.getElementById('cfs-user-name');
+    var emailInput = document.getElementById('cfs-user-email');
+    var phoneInput = document.getElementById('cfs-user-phone');
+    var tcpaCheck = document.getElementById('cfs-tcpa-consent');
+
+    if (!nameInput.value.trim()) {
+      alert('Please enter your full name.');
+      nameInput.focus();
+      return;
+    }
+    if (!emailInput.value.trim() || emailInput.value.indexOf('@') === -1) {
+      alert('Please enter a valid email address.');
+      emailInput.focus();
+      return;
+    }
+    if (!phoneInput.value.trim() || phoneInput.value.replace(/\D/g, '').length < 10) {
+      alert('Please enter a valid 10-digit phone number.');
+      phoneInput.focus();
+      return;
+    }
+    if (!tcpaCheck.checked) {
+      alert('Please check the consent box to receive your report.');
+      tcpaCheck.focus();
+      return;
+    }
+
+    var res = calculateShowdown();
+    var clientName = nameInput.value.trim();
+
+    document.getElementById('cfs-report-client-name').textContent = clientName;
+    document.getElementById('cfs-report-score-display').textContent = res.score;
+    document.getElementById('cfs-rep-age').textContent = 'Age ' + res.age;
+    document.getElementById('cfs-rep-year').textContent = res.startYear;
+    document.getElementById('cfs-rep-target').textContent = formatMoney(res.targetCost);
+    document.getElementById('cfs-rep-monthly').textContent = formatMoney(res.monthly) + '/mo';
+    document.getElementById('cfs-rep-projected').textContent = formatMoney(res.totalProjected);
+    document.getElementById('cfs-rep-gap').textContent = formatMoney(res.gap);
+
+    // Update GHL calendar link with query params if desired
+    var calLink = document.getElementById('cfs-book-calendar-link');
+    if (calLink) {
+      var encodedName = encodeURIComponent(clientName);
+      var encodedEmail = encodeURIComponent(emailInput.value.trim());
+      var encodedPhone = encodeURIComponent(phoneInput.value.trim());
+      calLink.href = 'https://api.leadconnectorhq.com/widget/booking?name=' + encodedName + '&email=' + encodedEmail + '&phone=' + encodedPhone;
+    }
+
+    fullReport.style.display = 'block';
+    fullReport.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+})();
+</script>
+
 </div>
 
 </body>
