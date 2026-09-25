@@ -28,6 +28,33 @@ html_content = f'''<!DOCTYPE html>
 
 <div id="cfs-root">
 <style>
+/* ==========================================================================
+   GLOBAL ZERO-MARGIN & FULL-BLEED RESET
+   Eliminates all gaps on standalone browser preview and within GoHighLevel
+   ========================================================================== */
+html, body {{
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  background-color: #ffffff;
+}}
+
+/* Ensure parent GoHighLevel wrappers do not inject gutters */
+.c-custom-code,
+.inner-section,
+.c-wrapper,
+.section-wrapper,
+.hl-page-preview--content {{
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}}
+
 #cfs-root *,
 #cfs-root *::before,
 #cfs-root *::after {{
@@ -78,7 +105,10 @@ html_content = f'''<!DOCTYPE html>
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
   display: block;
 }}
 
@@ -97,15 +127,18 @@ html_content = f'''<!DOCTYPE html>
   hyphens: auto;
 }}
 
-/* Brand Navigation Header */
+/* ==========================================================================
+   BRAND NAVIGATION HEADER - REFINED CORPORATE IDENTITY LOCKUP
+   ========================================================================== */
 #cfs-root .cfs-brand-bar {{
-  width: 100%;
+  width: 100% !important;
   background: var(--white);
-  border-bottom: 1px solid var(--grey-light);
-  padding: clamp(.75rem, 2vw, 1rem) clamp(1rem, 4vw, 2.5rem);
-  box-shadow: var(--shadow-sm);
+  border-bottom: 2px solid var(--grey-light);
+  padding: clamp(.75rem, 2vw, 1.1rem) clamp(1rem, 4vw, 2.5rem);
+  box-shadow: 0 2px 10px rgba(4,20,38,.06);
   position: relative;
   z-index: 100;
+  margin: 0 !important;
 }}
 
 #cfs-root .cfs-brand-inner {{
@@ -120,16 +153,82 @@ html_content = f'''<!DOCTYPE html>
 #cfs-root .cfs-brand-logo-wrap {{
   display: inline-flex;
   align-items: center;
+  gap: clamp(.65rem, 2vw, 1rem);
   text-decoration: none;
 }}
 
-#cfs-root .cfs-brand-logo {{
-  height: clamp(54px, 8vw, 70px);
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
+/* Refined circular/squircle crest frame */
+#cfs-root .cfs-brand-crest-frame {{
+  height: clamp(52px, 8vw, 68px);
+  width: clamp(52px, 8vw, 68px);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  box-shadow: 0 4px 14px rgba(4,20,38,.18);
+  background: #041426;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+}}
+
+#cfs-root .cfs-brand-logo-wrap:hover .cfs-brand-crest-frame {{
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(212,155,40,.35);
+}}
+
+#cfs-root .cfs-brand-crest-frame img {{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  border-radius: 8px;
+}}
+
+/* Typographic Brand Identity Lockup */
+#cfs-root .cfs-brand-wordmark {{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}}
+
+#cfs-root .cfs-brand-company-name {{
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+  font-weight: 900;
+  letter-spacing: .04em;
+  color: var(--navy);
+  line-height: 1.1;
+  text-transform: uppercase;
+}}
+
+#cfs-root .cfs-brand-company-name span {{
+  color: var(--gold);
+}}
+
+#cfs-root .cfs-brand-tagline-text {{
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(.65rem, 1.6vw, .76rem);
+  font-weight: 800;
+  letter-spacing: .12em;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  margin-top: 3px;
+  line-height: 1.2;
+}}
+
+#cfs-root .cfs-brand-sub-motto {{
+  font-size: clamp(.62rem, 1.4vw, .72rem);
+  color: var(--grey-text);
+  margin-top: 2px;
+  font-style: italic;
+  display: none;
+}}
+
+@media (min-width: 680px) {{
+  #cfs-root .cfs-brand-sub-motto {{
+    display: block;
+  }}
 }}
 
 #cfs-root .cfs-brand-badge {{
@@ -161,15 +260,18 @@ html_content = f'''<!DOCTYPE html>
   50% {{ transform: scale(1.35); opacity: .7; }}
 }}
 
-/* Hero Section */
+/* ==========================================================================
+   HERO SECTION - FULL-BLEED WITH NO EDGE GAPS
+   ========================================================================== */
 #cfs-root .cfs-hero {{
-  width: 100%;
+  width: 100% !important;
   background: linear-gradient(145deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-mid) 100%);
   color: var(--white);
   padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 2.5rem);
   position: relative;
   overflow: hidden;
   border-bottom: 3px solid var(--gold);
+  margin: 0 !important;
 }}
 
 #cfs-root .cfs-hero::after {{
@@ -347,13 +449,16 @@ html_content = f'''<!DOCTYPE html>
   margin: 0;
 }}
 
-/* SIDE-BY-SIDE COMPARISON SECTION (Prior to Calculator) */
+/* ==========================================================================
+   SIDE-BY-SIDE COMPARISON SECTION (Positioned Prior to Calculator)
+   ========================================================================== */
 #cfs-root .cfs-compare {{
-  width: 100%;
+  width: 100% !important;
   padding: clamp(3rem, 7vw, 5rem) clamp(1rem, 4vw, 2.5rem);
   background: var(--off-white);
   text-align: center;
   border-bottom: 1px solid var(--grey-light);
+  margin: 0 !important;
 }}
 
 #cfs-root .cfs-section-intro {{
@@ -532,11 +637,14 @@ html_content = f'''<!DOCTYPE html>
   margin-bottom: .25rem;
 }}
 
-/* CALCULATOR & FUNNEL SECTION */
+/* ==========================================================================
+   CALCULATOR & FUNNEL SECTION - FULL-BLEED
+   ========================================================================== */
 #cfs-root .cfs-calculator-section {{
-  width: 100%;
+  width: 100% !important;
   padding: clamp(3rem, 7vw, 5rem) clamp(1rem, 4vw, 2.5rem);
   background: #ffffff;
+  margin: 0 !important;
 }}
 
 #cfs-root .cfs-calc-container {{
@@ -787,7 +895,9 @@ html_content = f'''<!DOCTYPE html>
   grid-column: 1 / -1;
 }}
 
-/* TEASER SCORECARD BOX (Gated until valid opt-in) */
+/* ==========================================================================
+   TEASER SCORECARD BOX - WITH EMPHASIZED SCALE
+   ========================================================================== */
 #cfs-root .cfs-teaser-box {{
   background: linear-gradient(145deg, #041426 0%, #082444 60%, #0d3663 100%);
   border: 2px solid var(--gold);
@@ -1071,7 +1181,9 @@ html_content = f'''<!DOCTYPE html>
   margin: 0 auto;
 }}
 
-/* FULL REPORT SECTION */
+/* ==========================================================================
+   FULL REPORT SECTION
+   ========================================================================== */
 #cfs-root .cfs-full-report {{
   background: var(--white);
   border: 1.5px solid var(--grey-light);
@@ -1221,13 +1333,16 @@ html_content = f'''<!DOCTYPE html>
   letter-spacing: .04em;
 }}
 
-/* Benefits Section */
+/* ==========================================================================
+   BENEFITS SECTION - FULL-BLEED
+   ========================================================================== */
 #cfs-root .cfs-benefits {{
-  width: 100%;
+  width: 100% !important;
   padding: clamp(3rem, 7vw, 5rem) clamp(1rem, 4vw, 2.5rem);
   background: var(--off-white);
   text-align: center;
   border-top: 1px solid var(--grey-light);
+  margin: 0 !important;
 }}
 
 #cfs-root .cfs-benefits-grid {{
@@ -1283,50 +1398,86 @@ html_content = f'''<!DOCTYPE html>
   margin: 0;
 }}
 
-/* Footer */
+/* ==========================================================================
+   FOOTER - REFINED PRESTIGE CORPORATE SEAL & FULL-BLEED
+   ========================================================================== */
 #cfs-root .cfs-footer {{
-  width: 100%;
+  width: 100% !important;
   background: var(--navy-dark);
   border-top: 3px solid var(--gold);
-  padding: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 2.5rem);
+  padding: clamp(3rem, 6vw, 4.5rem) clamp(1rem, 4vw, 2.5rem);
   text-align: center;
   color: var(--white);
+  position: relative;
+  margin: 0 !important;
 }}
 
 #cfs-root .cfs-footer-brand {{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .75rem;
-  margin-bottom: 1.75rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }}
 
-#cfs-root .cfs-footer-logo-wrap {{
-  background: transparent;
-  padding: 0;
-  border: none;
-  box-shadow: none;
-  display: inline-flex;
+/* Prestige corporate seal frame */
+#cfs-root .cfs-footer-crest-frame {{
+  width: clamp(120px, 18vw, 160px);
+  height: clamp(90px, 14vw, 120px);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2.5px solid var(--gold);
+  box-shadow: 0 10px 35px rgba(0,0,0,.55), 0 0 25px rgba(212,155,40,.25);
+  background: #041426;
+  display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform .3s ease, box-shadow .3s ease;
 }}
 
-#cfs-root .cfs-footer-logo {{
-  height: clamp(85px, 14vw, 120px);
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
+#cfs-root .cfs-footer-crest-frame:hover {{
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(0,0,0,.65), 0 0 35px rgba(212,155,40,.4);
+}}
+
+#cfs-root .cfs-footer-crest-frame img {{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  border-radius: 12px;
-  box-shadow: 0 6px 26px rgba(0,0,0,.5);
 }}
 
-#cfs-root .cfs-footer-tagline {{
+#cfs-root .cfs-footer-brand-title {{
   font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--gold-light);
+  font-size: clamp(1.25rem, 3.2vw, 1.7rem);
+  font-weight: 900;
+  letter-spacing: .06em;
+  color: var(--white);
   margin: 0;
+  text-transform: uppercase;
+}}
+
+#cfs-root .cfs-footer-brand-title span {{
+  color: var(--gold-light);
+}}
+
+#cfs-root .cfs-footer-corp-sub {{
+  font-family: "Montserrat", sans-serif;
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: -4px;
+}}
+
+#cfs-root .cfs-footer-motto {{
+  font-size: clamp(.85rem, 2vw, .95rem);
+  color: #cbd5e1;
+  font-style: italic;
+  margin: 0;
+  max-width: 580px;
+  line-height: 1.5;
 }}
 
 #cfs-root .cfs-footer-disc {{
@@ -1368,11 +1519,18 @@ html_content = f'''<!DOCTYPE html>
   <header class="cfs-brand-bar" role="banner">
     <div class="cfs-brand-inner">
       <a href="#cfs-root" class="cfs-brand-logo-wrap" aria-label="BrightPath Legacy Wealth Home">
-        <img
-          src="data:image/webp;base64,{logo_b64}"
-          alt="BrightPath Legacy Wealth Corporation"
-          class="cfs-brand-logo"
-        />
+        <div class="cfs-brand-crest-frame">
+          <img
+            src="data:image/webp;base64,{logo_b64}"
+            alt="BrightPath Legacy Wealth Crest"
+            class="cfs-brand-logo-img"
+          />
+        </div>
+        <div class="cfs-brand-wordmark">
+          <div class="cfs-brand-company-name">BRIGHT<span>PATH</span></div>
+          <div class="cfs-brand-tagline-text">LEGACY WEALTH CORPORATION</div>
+          <div class="cfs-brand-sub-motto">Empowering Every Child's Financial Future</div>
+        </div>
       </a>
       <div class="cfs-brand-badge" aria-label="Official Evaluation">
         <span class="cfs-badge-dot" aria-hidden="true"></span>
@@ -1943,14 +2101,18 @@ html_content = f'''<!DOCTYPE html>
   <!-- Footer -->
   <footer class="cfs-footer" role="contentinfo">
     <div class="cfs-footer-brand">
-      <div class="cfs-footer-logo-wrap">
+      <div class="cfs-footer-crest-frame">
         <img
           src="data:image/webp;base64,{logo_b64}"
-          alt="BrightPath Legacy Wealth Corporation"
+          alt="BrightPath Legacy Wealth Official Crest"
           class="cfs-footer-logo"
         />
       </div>
-      <p class="cfs-footer-tagline">BrightPath Legacy Wealth Corporation</p>
+      <div class="cfs-footer-brand-title">BRIGHT<span>PATH</span></div>
+      <div class="cfs-footer-corp-sub">LEGACY WEALTH CORPORATION</div>
+      <p class="cfs-footer-motto">
+        Empowering Every Child&rsquo;s Financial Future &bull; From Birth and Beyond
+      </p>
     </div>
 
     <p class="cfs-footer-disc">
@@ -2158,7 +2320,7 @@ html_content = f'''<!DOCTYPE html>
     var scalePointer = document.getElementById('cfs-scale-pointer');
     var pointerBubble = document.getElementById('cfs-pointer-bubble');
     if (scalePointer) {{
-      // Bound pointer position within visible track (3% to 97%)
+      // Bound pointer position within visible track (4% to 96%)
       var pointerPos = Math.max(4, Math.min(96, res.score));
       scalePointer.style.left = pointerPos + '%';
     }}
@@ -2203,17 +2365,16 @@ html_content = f'''<!DOCTYPE html>
 </html>
 '''
 
-# Write out index.html
+# Write index.html
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
+print("Updated index.html, size:", os.path.getsize('index.html'))
 
-print("Successfully written index.html! File size:", os.path.getsize('index.html'))
-
-# Also write college-funding-showdown.html (the pure embed snippet for GoHighLevel Custom Code block)
-ghl_snippet = re.sub(r'<!DOCTYPE html>.*?<div id="cfs-root">', '<div id="cfs-root">', html_content, flags=re.DOTALL)
-ghl_snippet = re.sub(r'</body>\s*</html>', '', ghl_snippet, flags=re.DOTALL).strip()
+# Write college-funding-showdown.html
+# Make sure college-funding-showdown.html has the global reset style at the top so opening it standalone in browser has zero margins
+ghl_body = re.sub(r'<!DOCTYPE html>.*?<div id="cfs-root">', '<div id="cfs-root">', html_content, flags=re.DOTALL)
+ghl_body = re.sub(r'</body>\s*</html>', '', ghl_body, flags=re.DOTALL).strip()
 
 with open('college-funding-showdown.html', 'w', encoding='utf-8') as f:
-    f.write(ghl_snippet)
-
-print("Successfully written college-funding-showdown.html! File size:", os.path.getsize('college-funding-showdown.html'))
+    f.write(ghl_body)
+print("Updated college-funding-showdown.html, size:", os.path.getsize('college-funding-showdown.html'))
