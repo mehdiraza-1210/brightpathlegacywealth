@@ -64,17 +64,19 @@ html, body {{
 }}
 
 #cfs-root {{
-  /* BrightPath Legacy Wealth Brand Color Palette - Matched Directly to Official Logo */
+  /* Exact Logo-Grounding Brand Palette */
   --navy-dark: #041426;
-  --navy: #082444;
-  --navy-mid: #0d3663;
-  --navy-light: #164e8a;
-  --blue-accent: #1da4db;
-  --blue-ice: #edf5fc;
+  --navy: #062a4d;
+  --navy-mid: #0a3a6b;
+  --navy-light: #145695;
 
-  --gold: #d49b28;
+  /* Official Logo Text Accents */
+  --cyan-path: #029bbb;          /* The exact cyan of 'PATH' in the logo */
+  --cyan-path-glow: #00c6ea;     /* Electric cyan highlight for dark backgrounds */
+  --silver-bright: #e2edf7;      /* Metallic platinum/silver from 'BRIGHT' */
+  --gold: #d4a034;              /* Metallic gold swoosh & border */
   --gold-dark: #b07e1a;
-  --gold-light: #f5cb5c;
+  --gold-light: #f3c04a;         /* Golden script 'from Birth and Beyond' */
   --gold-pale: #fcf7ed;
 
   --growth-green: #10b981;
@@ -84,7 +86,7 @@ html, body {{
   --off-white: #f5f8fc;
   --grey-light: #e1e7f0;
   --grey-text: #485c72;
-  --dark-text: #081f38;
+  --dark-text: #062a4d;
 
   --radius: 12px;
   --pill: 50px;
@@ -128,7 +130,7 @@ html, body {{
 }}
 
 /* ==========================================================================
-   BRAND NAVIGATION HEADER - REFINED CORPORATE IDENTITY LOCKUP
+   BRAND NAVIGATION HEADER - EXACT LOGO COLOR LOCKUP
    ========================================================================== */
 #cfs-root .cfs-brand-bar {{
   width: 100% !important;
@@ -153,7 +155,7 @@ html, body {{
 #cfs-root .cfs-brand-logo-wrap {{
   display: inline-flex;
   align-items: center;
-  gap: clamp(.65rem, 2vw, 1rem);
+  gap: clamp(.65rem, 2vw, 1.1rem);
   text-decoration: none;
 }}
 
@@ -175,7 +177,7 @@ html, body {{
 
 #cfs-root .cfs-brand-logo-wrap:hover .cfs-brand-crest-frame {{
   transform: scale(1.04);
-  box-shadow: 0 6px 18px rgba(212,155,40,.35);
+  box-shadow: 0 6px 18px rgba(2,155,187,.35);
 }}
 
 #cfs-root .cfs-brand-crest-frame img {{
@@ -185,7 +187,7 @@ html, body {{
   display: block;
 }}
 
-/* Typographic Brand Identity Lockup */
+/* Typographic Brand Identity Lockup - EXACT LOGO COLORS */
 #cfs-root .cfs-brand-wordmark {{
   display: flex;
   flex-direction: column;
@@ -194,39 +196,63 @@ html, body {{
 
 #cfs-root .cfs-brand-company-name {{
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+  font-size: clamp(1.25rem, 2.8vw, 1.6rem);
   font-weight: 900;
   letter-spacing: .04em;
+  line-height: 1.05;
+  display: flex;
+  align-items: baseline;
+}}
+
+/* 'BRIGHT' is deep navy/sapphire on white */
+#cfs-root .cfs-name-bright {{
   color: var(--navy);
-  line-height: 1.1;
-  text-transform: uppercase;
+  text-shadow: 0 1px 1px rgba(0,0,0,.08);
 }}
 
-#cfs-root .cfs-brand-company-name span {{
-  color: var(--gold);
+/* 'PATH' is EXACT CYAN from the logo */
+#cfs-root .cfs-name-path {{
+  color: var(--cyan-path);
+  text-shadow: 0 1px 2px rgba(2,155,187,.3);
+  letter-spacing: .03em;
 }}
 
-#cfs-root .cfs-brand-tagline-text {{
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(.65rem, 1.6vw, .76rem);
-  font-weight: 800;
-  letter-spacing: .12em;
-  color: var(--gold-dark);
-  text-transform: uppercase;
+#cfs-root .cfs-brand-legacy-row {{
+  display: flex;
+  align-items: center;
+  gap: .45rem;
   margin-top: 3px;
+}}
+
+#cfs-root .cfs-gold-dash {{
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), #f5cb5c);
+  border-radius: 1px;
+}}
+
+#cfs-root .cfs-brand-legacy-text {{
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(.66rem, 1.6vw, .76rem);
+  font-weight: 800;
+  letter-spacing: .15em;
+  color: var(--navy);
+  text-transform: uppercase;
   line-height: 1.2;
 }}
 
-#cfs-root .cfs-brand-sub-motto {{
-  font-size: clamp(.62rem, 1.4vw, .72rem);
+#cfs-root .cfs-brand-motto-text {{
+  font-size: clamp(.62rem, 1.3vw, .72rem);
   color: var(--grey-text);
-  margin-top: 2px;
   font-style: italic;
+  margin-top: 2px;
+  line-height: 1.2;
   display: none;
 }}
 
 @media (min-width: 680px) {{
-  #cfs-root .cfs-brand-sub-motto {{
+  #cfs-root .cfs-brand-motto-text {{
     display: block;
   }}
 }}
@@ -242,7 +268,7 @@ html, body {{
   font-family: "Montserrat", sans-serif;
   font-size: clamp(.68rem, 2vw, .8rem);
   font-weight: 700;
-  color: var(--navy-mid);
+  color: var(--navy);
   white-space: nowrap;
 }}
 
@@ -250,7 +276,8 @@ html, body {{
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--cyan-path);
+  box-shadow: 0 0 6px var(--cyan-path);
   display: inline-block;
   animation: cfsPulse 2s infinite ease-in-out;
 }}
@@ -281,7 +308,7 @@ html, body {{
   right: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(212,155,40,.15) 0%, rgba(29,164,219,.08) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(2,155,187,.14) 0%, rgba(212,155,40,.12) 45%, transparent 70%);
   pointer-events: none;
 }}
 
@@ -560,7 +587,7 @@ html, body {{
 #cfs-root .cfs-card-sub {{
   font-size: .82rem;
   font-weight: 700;
-  color: var(--blue-accent);
+  color: var(--cyan-path);
   text-transform: uppercase;
   letter-spacing: .05em;
   margin: 0 0 .75rem 0;
@@ -784,8 +811,8 @@ html, body {{
 
 #cfs-root .cfs-select-box:focus,
 #cfs-root .cfs-form-input:focus {{
-  border-color: var(--navy-mid);
-  box-shadow: 0 0 0 3px rgba(13,54,99,.15);
+  border-color: var(--cyan-path);
+  box-shadow: 0 0 0 3px rgba(2,155,187,.18);
 }}
 
 /* Opt-In Mandatory Form Styles */
@@ -830,7 +857,7 @@ html, body {{
 }}
 
 #cfs-root .cfs-captcha-badge {{
-  background: linear-gradient(135deg, #041426 0%, #0d3663 100%);
+  background: linear-gradient(135deg, #041426 0%, #062a4d 100%);
   border: 1.5px dashed var(--gold);
   border-radius: 8px;
   padding: .65rem 1.1rem;
@@ -847,7 +874,7 @@ html, body {{
   font-size: 1.4rem;
   font-weight: 900;
   letter-spacing: .3em;
-  color: var(--gold-light);
+  color: var(--cyan-path-glow);
   text-decoration: line-through;
   text-shadow: 1px 1px 3px rgba(0,0,0,.7);
   transform: skewX(-10deg);
@@ -899,7 +926,7 @@ html, body {{
    TEASER SCORECARD BOX - WITH EMPHASIZED SCALE
    ========================================================================== */
 #cfs-root .cfs-teaser-box {{
-  background: linear-gradient(145deg, #041426 0%, #082444 60%, #0d3663 100%);
+  background: linear-gradient(145deg, #041426 0%, #062a4d 60%, #0a3a6b 100%);
   border: 2px solid var(--gold);
   border-radius: 16px;
   padding: clamp(1.75rem, 5vw, 3rem);
@@ -916,9 +943,9 @@ html, body {{
 
 #cfs-root .cfs-teaser-pill {{
   display: inline-block;
-  background: rgba(212,155,40,.2);
-  border: 1px solid var(--gold);
-  color: var(--gold-light);
+  background: rgba(2,155,187,.2);
+  border: 1px solid var(--cyan-path);
+  color: var(--cyan-path-glow);
   font-family: "Montserrat", sans-serif;
   font-size: .75rem;
   font-weight: 800;
@@ -968,7 +995,7 @@ html, body {{
 #cfs-root .cfs-scale-badge-wrap {{
   display: inline-flex;
   align-items: baseline;
-  background: linear-gradient(135deg, rgba(212,155,40,.25) 0%, rgba(212,155,40,.08) 100%);
+  background: linear-gradient(135deg, rgba(2,155,187,.25) 0%, rgba(212,155,40,.12) 100%);
   border: 2px solid var(--gold);
   border-radius: var(--pill);
   padding: .5rem 1.6rem;
@@ -1078,7 +1105,7 @@ html, body {{
 }}
 
 #cfs-root .cfs-seg-good {{
-  background: linear-gradient(90deg, #0284c7 0%, #0ea5e9 100%);
+  background: linear-gradient(90deg, #0284c7 0%, #00b8d4 100%);
 }}
 
 #cfs-root .cfs-seg-elite {{
@@ -1159,8 +1186,8 @@ html, body {{
 }}
 
 #cfs-root .cfs-teaser-curiosity {{
-  background: rgba(212,155,40,.18);
-  border-left: 4px solid var(--gold);
+  background: rgba(2,155,187,.15);
+  border-left: 4px solid var(--cyan-path);
   border-radius: 6px;
   padding: 1rem 1.35rem;
   margin: 0 auto 2rem;
@@ -1266,8 +1293,8 @@ html, body {{
 
 #cfs-root .cfs-matrix-table thead th.th-highlight {{
   background: #041426;
-  border-top: 4px solid var(--gold);
-  color: var(--gold-light);
+  border-top: 4px solid var(--cyan-path);
+  color: #5fe5fc;
 }}
 
 #cfs-root .cfs-matrix-table tbody tr:nth-child(even) {{
@@ -1279,11 +1306,11 @@ html, body {{
 }}
 
 #cfs-root .cfs-matrix-table td.td-highlight {{
-  background: rgba(212,155,40,.07);
+  background: rgba(2,155,187,.06);
   font-weight: 600;
   color: var(--navy);
-  border-left: 2px solid rgba(212,155,40,.35);
-  border-right: 2px solid rgba(212,155,40,.35);
+  border-left: 2px solid rgba(2,155,187,.35);
+  border-right: 2px solid rgba(2,155,187,.35);
 }}
 
 /* Booking Callout Card */
@@ -1399,7 +1426,7 @@ html, body {{
 }}
 
 /* ==========================================================================
-   FOOTER - REFINED PRESTIGE CORPORATE SEAL & FULL-BLEED
+   FOOTER - REFINED PRESTIGE CORPORATE SEAL & EXACT LOGO COLORS
    ========================================================================== */
 #cfs-root .cfs-footer {{
   width: 100% !important;
@@ -1437,7 +1464,7 @@ html, body {{
 
 #cfs-root .cfs-footer-crest-frame:hover {{
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 14px 40px rgba(0,0,0,.65), 0 0 35px rgba(212,155,40,.4);
+  box-shadow: 0 14px 40px rgba(0,0,0,.65), 0 0 35px rgba(2,155,187,.4);
 }}
 
 #cfs-root .cfs-footer-crest-frame img {{
@@ -1449,40 +1476,72 @@ html, body {{
 
 #cfs-root .cfs-footer-brand-title {{
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(1.25rem, 3.2vw, 1.7rem);
+  font-size: clamp(1.4rem, 3.4vw, 1.85rem);
   font-weight: 900;
-  letter-spacing: .06em;
-  color: var(--white);
+  letter-spacing: .05em;
   margin: 0;
-  text-transform: uppercase;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1px;
 }}
 
-#cfs-root .cfs-footer-brand-title span {{
-  color: var(--gold-light);
+#cfs-root .cfs-footer-name-bright {{
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+}}
+
+#cfs-root .cfs-footer-name-path {{
+  color: var(--cyan-path-glow);
+  text-shadow: 0 2px 10px rgba(0,198,234,.5);
+}}
+
+#cfs-root .cfs-footer-legacy-row {{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  margin-top: 2px;
+}}
+
+#cfs-root .cfs-footer-gold-dash {{
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), #f5cb5c);
+  border-radius: 1px;
 }}
 
 #cfs-root .cfs-footer-corp-sub {{
   font-family: "Montserrat", sans-serif;
-  font-size: .82rem;
+  font-size: clamp(.78rem, 2vw, .88rem);
   font-weight: 800;
-  letter-spacing: .15em;
-  color: var(--gold);
+  letter-spacing: .18em;
+  color: #ffffff;
   text-transform: uppercase;
-  margin-top: -4px;
 }}
 
-#cfs-root .cfs-footer-motto {{
-  font-size: clamp(.85rem, 2vw, .95rem);
-  color: #cbd5e1;
+#cfs-root .cfs-footer-motto-primary {{
+  font-size: clamp(.88rem, 2vw, .98rem);
+  color: #ffffff;
   font-style: italic;
-  margin: 0;
-  max-width: 580px;
+  margin: .35rem 0 0 0;
   line-height: 1.5;
+}}
+
+#cfs-root .cfs-footer-motto-secondary {{
+  font-family: "Georgia", serif;
+  font-size: clamp(.95rem, 2.2vw, 1.15rem);
+  color: var(--gold-light);
+  font-style: italic;
+  font-weight: 600;
+  margin: .15rem 0 0 0;
+  text-shadow: 0 2px 6px rgba(0,0,0,.4);
 }}
 
 #cfs-root .cfs-footer-disc {{
   max-width: 820px;
-  margin: 0 auto 1.5rem auto;
+  margin: 1.25rem auto 1.5rem auto;
   font-size: .78rem;
   line-height: 1.6;
   color: #94a3b8;
@@ -1505,7 +1564,7 @@ html, body {{
 }}
 
 #cfs-root .cfs-footer-links a:hover {{
-  color: var(--gold-light);
+  color: var(--cyan-path-glow);
 }}
 
 #cfs-root .cfs-footer-copy {{
@@ -1527,9 +1586,15 @@ html, body {{
           />
         </div>
         <div class="cfs-brand-wordmark">
-          <div class="cfs-brand-company-name">BRIGHT<span>PATH</span></div>
-          <div class="cfs-brand-tagline-text">LEGACY WEALTH CORPORATION</div>
-          <div class="cfs-brand-sub-motto">Empowering Every Child's Financial Future</div>
+          <div class="cfs-brand-company-name">
+            <span class="cfs-name-bright">BRIGHT</span><span class="cfs-name-path">PATH</span>
+          </div>
+          <div class="cfs-brand-legacy-row">
+            <span class="cfs-gold-dash"></span>
+            <span class="cfs-brand-legacy-text">LEGACY WEALTH</span>
+            <span class="cfs-gold-dash"></span>
+          </div>
+          <div class="cfs-brand-motto-text">Empowering Every Child's Financial Future</div>
         </div>
       </a>
       <div class="cfs-brand-badge" aria-label="Official Evaluation">
@@ -2108,10 +2173,19 @@ html, body {{
           class="cfs-footer-logo"
         />
       </div>
-      <div class="cfs-footer-brand-title">BRIGHT<span>PATH</span></div>
-      <div class="cfs-footer-corp-sub">LEGACY WEALTH CORPORATION</div>
-      <p class="cfs-footer-motto">
-        Empowering Every Child&rsquo;s Financial Future &bull; From Birth and Beyond
+      <div class="cfs-footer-brand-title">
+        <span class="cfs-footer-name-bright">BRIGHT</span><span class="cfs-footer-name-path">PATH</span>
+      </div>
+      <div class="cfs-footer-legacy-row">
+        <span class="cfs-footer-gold-dash"></span>
+        <span class="cfs-footer-corp-sub">LEGACY WEALTH</span>
+        <span class="cfs-footer-gold-dash"></span>
+      </div>
+      <p class="cfs-footer-motto-primary">
+        Empowering Every Child&rsquo;s Financial Future
+      </p>
+      <p class="cfs-footer-motto-secondary">
+        from Birth and Beyond
       </p>
     </div>
 
@@ -2371,7 +2445,6 @@ with open('index.html', 'w', encoding='utf-8') as f:
 print("Updated index.html, size:", os.path.getsize('index.html'))
 
 # Write college-funding-showdown.html
-# Make sure college-funding-showdown.html has the global reset style at the top so opening it standalone in browser has zero margins
 ghl_body = re.sub(r'<!DOCTYPE html>.*?<div id="cfs-root">', '<div id="cfs-root">', html_content, flags=re.DOTALL)
 ghl_body = re.sub(r'</body>\s*</html>', '', ghl_body, flags=re.DOTALL).strip()
 
