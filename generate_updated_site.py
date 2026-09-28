@@ -9,7 +9,10 @@ with open('brightpath-logo.webp', 'rb') as f:
 with open('college-savings-flyer.webp', 'rb') as f:
     flyer_b64 = base64.b64encode(f.read()).decode('utf-8')
 
-print("Loaded assets: logo b64 length =", len(logo_b64), ", flyer b64 length =", len(flyer_b64))
+with open('todays-plans-flyer.webp', 'rb') as f:
+    todays_plans_b64 = base64.b64encode(f.read()).decode('utf-8')
+
+print("Loaded assets: logo b64 length =", len(logo_b64), ", flyer b64 length =", len(flyer_b64), ", todays_plans b64 length =", len(todays_plans_b64))
 
 # HTML Template
 html_content = f'''<!DOCTYPE html>
@@ -323,7 +326,7 @@ html, body {{
   z-index: 1;
 }}
 
-@media (min-width: 920px) {{
+@media (min-width: 768px) {{
   #cfs-root .cfs-hero-container {{
     grid-template-columns: 1.1fr 0.9fr;
   }}
@@ -353,11 +356,20 @@ html, body {{
 
 #cfs-root .cfs-h1 {{
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(1.85rem, 4.2vw, 3rem);
+  font-size: clamp(1.85rem, 4vw, 2.95rem);
   font-weight: 900;
-  line-height: 1.18;
+  line-height: 1.2;
   color: var(--white);
   margin: 0;
+}}
+
+#cfs-root .cfs-hero-break {{
+  display: inline;
+}}
+@media (max-width: 640px) {{
+  #cfs-root .cfs-hero-break {{
+    display: none;
+  }}
 }}
 
 #cfs-root .cfs-sub {{
@@ -995,11 +1007,15 @@ html, body {{
 #cfs-root .cfs-scale-badge-wrap {{
   display: inline-flex;
   align-items: baseline;
+  justify-content: center;
   background: linear-gradient(135deg, rgba(2,155,187,.25) 0%, rgba(212,155,40,.12) 100%);
   border: 2px solid var(--gold);
   border-radius: var(--pill);
   padding: .5rem 1.6rem;
   box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  white-space: nowrap !important;
+  flex-shrink: 0;
+  min-width: max-content;
 }}
 
 #cfs-root .cfs-scale-score-main {{
@@ -1008,6 +1024,9 @@ html, body {{
   font-weight: 900;
   color: var(--gold-light);
   line-height: 1;
+  white-space: nowrap !important;
+  word-break: keep-all;
+  display: inline-block;
 }}
 
 #cfs-root .cfs-scale-score-denominator {{
@@ -1015,6 +1034,8 @@ html, body {{
   font-weight: 800;
   color: rgba(255,255,255,.75);
   margin-left: .35rem;
+  white-space: nowrap !important;
+  display: inline-block;
 }}
 
 #cfs-root .cfs-scale-status-title {{
@@ -1028,6 +1049,114 @@ html, body {{
 #cfs-root .cfs-scale-status-desc {{
   font-size: .88rem;
   color: #cbd5e1;
+}}
+
+/* Specialist Strategy Review Card (Matching Image 6) */
+#cfs-root .cfs-specialist-card {{
+  background: linear-gradient(180deg, rgba(6,42,77,0.85) 0%, rgba(4,20,38,0.95) 100%);
+  border: 1.5px solid rgba(212,155,40,0.55);
+  border-radius: 16px;
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  text-align: center;
+  max-width: 820px;
+  margin: 2.25rem auto 1.5rem auto;
+  box-shadow: 0 14px 40px rgba(0,0,0,.4);
+}}
+
+#cfs-root .cfs-specialist-title {{
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.3rem, 3.2vw, 1.85rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 .75rem 0;
+  line-height: 1.25;
+}}
+
+#cfs-root .cfs-specialist-desc {{
+  font-size: clamp(.9rem, 2vw, 1.02rem);
+  line-height: 1.6;
+  color: #d8e5f2;
+  margin: 0 auto 1.5rem auto;
+  max-width: 660px;
+}}
+
+#cfs-root .cfs-btn--specialist {{
+  background: linear-gradient(135deg, var(--gold) 0%, #b8831a 100%);
+  color: #041426;
+  font-weight: 800;
+  font-size: clamp(.92rem, 2vw, 1.06rem);
+  padding: .85rem 2.2rem;
+  box-shadow: 0 4px 20px rgba(212,155,40,.45);
+}}
+
+#cfs-root .cfs-specialist-guarantee {{
+  font-size: .82rem;
+  font-weight: 600;
+  color: #9cb3cb;
+  margin: 1.15rem 0 0 0;
+  letter-spacing: .02em;
+}}
+
+/* Calculator Intro 2-Column Grid (Side by Side Desktop) */
+#cfs-root .cfs-calc-intro-grid {{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  align-items: center;
+  margin-bottom: 2rem;
+  text-align: left;
+}}
+
+@media (min-width: 768px) {{
+  #cfs-root .cfs-calc-intro-grid {{
+    grid-template-columns: 1.15fr 0.85fr;
+  }}
+}}
+
+#cfs-root .cfs-calc-one-line {{
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.35rem, 2.5vw, 2.1rem);
+  font-weight: 900;
+  color: var(--navy);
+  margin: .35rem 0 0 0;
+  line-height: 1.2;
+}}
+
+@media (min-width: 1040px) {{
+  #cfs-root .cfs-calc-one-line {{
+    white-space: nowrap;
+  }}
+}}
+
+#cfs-root .cfs-calc-intro-visual {{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}}
+
+#cfs-root .cfs-calc-visual-frame {{
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(4,20,38,.25);
+  border: 2px solid rgba(212, 155, 40, 0.45);
+  background: #041426;
+}}
+
+#cfs-root .cfs-calc-visual-frame img {{
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform .4s ease;
+}}
+
+#cfs-root .cfs-calc-visual-frame:hover img {{
+  transform: scale(1.02);
 }}
 
 /* Segmented Progress Track with Dynamic Pointer */
@@ -1375,14 +1504,20 @@ html, body {{
 #cfs-root .cfs-benefits-grid {{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  max-width: 1080px;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  max-width: 1180px;
   margin: 2.5rem auto 0 auto;
 }}
 
-@media (min-width: 800px) {{
+@media (min-width: 640px) {{
   #cfs-root .cfs-benefits-grid {{
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }}
+}}
+
+@media (min-width: 960px) {{
+  #cfs-root .cfs-benefits-grid {{
+    grid-template-columns: repeat(5, 1fr);
   }}
 }}
 
@@ -1613,7 +1748,7 @@ html, body {{
         <p class="cfs-eyebrow">The Ultimate College Funding Showdown</p>
 
         <h1 class="cfs-h1">
-          There&rsquo;s More Than One Way<br />to Pay for College
+          There&rsquo;s More Than One Way<br class="cfs-hero-break" /> to Save for College
         </h1>
 
         <p class="cfs-sub">
@@ -1746,12 +1881,27 @@ html, body {{
   <section class="cfs-calculator-section" id="cfs-calculator" aria-label="College Funding Showdown Calculator">
     <div class="cfs-calc-container">
       
-      <div class="cfs-section-intro" style="margin-bottom: 1.25rem;">
-        <p class="cfs-eyebrow">Interactive Self-Service Analysis</p>
-        <h2 class="cfs-h2">The College Funding Showdown Calculator</h2>
-        <p>
-          Compare your family&rsquo;s current college trajectory against the 3 major options. Calculate your personalized <strong>College Funding Score</strong> and uncover your projected funding gap in 60 seconds.
-        </p>
+      <!-- Calculator Intro Side-by-Side (Desktop) -->
+      <div class="cfs-calc-intro-grid">
+        <div class="cfs-calc-intro-text">
+          <p class="cfs-eyebrow">Interactive Self-Service Analysis</p>
+          <h2 class="cfs-calc-one-line">The College Funding Showdown Calculator</h2>
+          <p class="cfs-sub" style="color:var(--grey-text); margin-top:0.75rem;">
+            Compare your family&rsquo;s current college trajectory against the 3 major options. Calculate your personalized <strong>College Funding Score</strong> and uncover your projected funding gap in 60 seconds.
+          </p>
+        </div>
+
+        <div class="cfs-calc-intro-visual">
+          <div class="cfs-calc-visual-frame">
+            <img
+              src="data:image/webp;base64,{todays_plans_b64}"
+              alt="Today's Plans Build Tomorrow's Dreams - 3-Way Showdown"
+              loading="lazy"
+              width="440"
+              height="440"
+            />
+          </div>
+        </div>
       </div>
 
       <!-- Calculator Inputs & Mandatory Verification Opt-In Card -->
@@ -1793,15 +1943,15 @@ html, body {{
               </div>
             </div>
 
-            <!-- Monthly Savings Contribution Slider -->
+            <!-- Planned/Monthly Savings Slider (Min $150) -->
             <div class="cfs-input-group">
               <label for="cfs-monthly-savings" class="cfs-label">
-                <span>Planned Monthly Savings ($/mo)</span>
+                <span>Planned/Monthly Savings ($/mo)</span>
                 <span class="cfs-label-val" id="cfs-monthly-display">$350/mo</span>
               </label>
-              <input type="range" id="cfs-monthly-savings" class="cfs-range" min="50" max="2500" value="350" step="25" />
+              <input type="range" id="cfs-monthly-savings" class="cfs-range" min="150" max="2500" value="350" step="25" />
               <div class="cfs-range-ticks">
-                <span>$50/mo</span><span>$500/mo</span><span>$1,000/mo</span><span>$2,500/mo</span>
+                <span>$150/mo</span><span>$500/mo</span><span>$1,000/mo</span><span>$2,500/mo</span>
               </div>
             </div>
 
@@ -1817,7 +1967,7 @@ html, body {{
                 <option value="240000">Private 4-Year Non-Profit College ($240,000 total)</option>
                 <option value="350000">Elite Private / Healthcare Pre-Med ($350,000 total)</option>
               </select>
-              <p class="cfs-hint">Benchmark estimates reflect current 4-year tuition, fees, room, and board with projected cost inflation.</p>
+              <p class="cfs-hint">Benchmark automatically compounds for 3.5% projected annual tuition inflation to your child&rsquo;s future college enrollment year.</p>
             </div>
           </div>
 
@@ -1849,7 +1999,7 @@ html, body {{
             <div class="cfs-form-group">
               <label for="cfs-user-concern" class="cfs-label">Biggest College Funding Concern</label>
               <select id="cfs-user-concern" class="cfs-select-box">
-                <option value="Financial Aid Impact">Losing financial aid/FAFSA eligibility due to 529 assets</option>
+                <option value="Financial Aid Impact">Losing Financial Aid/FAFSA eligibility due to 529 Assets and other College Saving Plans</option>
                 <option value="Market Risk">Market volatility wiping out savings right before college</option>
                 <option value="Non-College Penalties">Penalties/taxes if child gets a scholarship or skips college</option>
                 <option value="Not Saving Enough">Falling short of high future tuition bills</option>
@@ -1971,12 +2121,29 @@ html, body {{
 
         <p class="cfs-teaser-copy" id="cfs-teaser-narrative">
           Based on your inputs, you have a projected savings gap of <strong id="cfs-narrative-gap">$23,600</strong>. 
-          While traditional 529 plans lock your funds into rigid education-only mandates with market risk, and Trump Accounts face strict statutory limits, 
-          the <strong>Flexible Insurance Option</strong> offers a protected alternative that builds wealth with zero market downside loss.
+          Click below to get your complete 3-Way Showdown comparison. The full report will be sent directly to your email, 
+          where you can also access a direct link to book a complimentary 15-minute Strategy Review appointment with a college funding specialist.
         </p>
 
+        <!-- Specialist Review Card (Image 6 from Specifications) -->
+        <div class="cfs-specialist-card">
+          <h3 class="cfs-specialist-title">Review My College Funding Score with a Specialist</h3>
+          <p class="cfs-specialist-desc">
+            Your personalized report indicates opportunities to eliminate your projected funding gap while shielding your assets from FAFSA calculations and stock market volatility. Book a complimentary 15-minute Strategy Review.
+          </p>
+          <div>
+            <a href="#cfs-full-report" class="cfs-btn cfs-btn--specialist" id="cfs-btn-schedule-review">
+              <span>Schedule My Strategy Review</span>
+              <span class="cfs-btn-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+          <p class="cfs-specialist-guarantee">
+            100% Free Consultation &bull; Licensed Professionals &bull; No Obligation
+          </p>
+        </div>
+
         <div class="cfs-teaser-curiosity">
-          <strong>Curiosity Insight:</strong> Did you know cash-value life insurance is <em>completely exempt</em> from the FAFSA financial aid formula, while 529 plans can reduce financial aid eligibility by up to 5.64% per year?
+          <strong>Curiosity Insight:</strong> Did you know cash-value life insurance is <em>completely exempt</em> from the FAFSA financial aid formula, while 529s and other college saving plans, including Trump Accounts, are counted as parental assets (assessed up to 5.64%/yr against student aid)?
         </div>
 
         <p style="font-size:0.75rem; color:rgba(255,255,255,0.65); text-align:center; margin-bottom:1.5rem;">
@@ -2012,7 +2179,7 @@ html, body {{
         <!-- Executive Summary Recap -->
         <div style="background:var(--gold-pale); border:1px solid rgba(212,155,40,0.35); border-radius:10px; padding:1.25rem 1.5rem; margin-bottom:2rem;">
           <p style="margin:0; font-size:.92rem; color:var(--navy); line-height:1.6;" id="cfs-report-summary-text">
-            <strong>Analysis Summary:</strong> For your child starting college in <span id="cfs-sum-year">2039</span>, projected 4-year tuition benchmark is <span id="cfs-sum-cost">$110,000</span>. At your planned savings rate, you are projected to accumulate <span id="cfs-sum-saved">$86,400</span>, leaving a projected funding gap of <span id="cfs-sum-gap">$23,600</span>. Below is your complete side-by-side evaluation of how Trump Accounts, Traditional 529s, and the Flexible Life Insurance Option address this gap.
+            <strong>Analysis Summary:</strong> For your child starting college in <span id="cfs-sum-year">2039</span>, projected 4-year tuition benchmark is <span id="cfs-sum-cost">$110,000</span>. At your planned savings rate, you are projected to accumulate <span id="cfs-sum-saved">$86,400</span>, leaving a projected funding gap of <span id="cfs-sum-gap">$23,600</span>. Below is your complete side-by-side evaluation of how Traditional 529s and other savings plans, Trump Accounts, and the Flexible Life Insurance Option address this gap.
           </p>
         </div>
 
@@ -2035,7 +2202,7 @@ html, body {{
                 <td class="td-highlight">&#10004; Flexible funding structured to parent&rsquo;s cash flow &amp; capacity.</td>
               </tr>
               <tr>
-                <td><strong>Tax-Free Growth &amp; Distributions</strong></td>
+                <td><strong>Tax-Deferred Growth &amp; Distributions</strong></td>
                 <td>Tax-free only for IRS-qualified education expenses.</td>
                 <td>Tax-advantaged for authorized educational/training uses only.</td>
                 <td class="td-highlight">&#10004; Tax-free cash-value growth &amp; tax-free distributions via policy loans.</td>
@@ -2056,13 +2223,13 @@ html, body {{
                 <td><strong>Withdrawal Restrictions</strong></td>
                 <td>Strict. 10% federal penalty + income tax on earnings if used for non-college purposes.</td>
                 <td>Rigid rules on qualifying expenses and approved institutions.</td>
-                <td class="td-highlight">&#10004; <strong>Unrestricted.</strong> Use for college, first home, business launch, or emergencies.</td>
+                <td class="td-highlight">&#10004; <strong>Unrestricted.</strong> Use for college, first home, business launch, or emergencies, and Life Events.</td>
               </tr>
               <tr>
                 <td><strong>Non-College Flexibility</strong></td>
                 <td>Rigid. Can roll up to $35k to Roth IRA (after 15 yrs) or change beneficiary to family.</td>
                 <td>Locked into statutory career/education program rules.</td>
-                <td class="td-highlight">&#10004; <strong>Full Ownership.</strong> Child gets a lifetime financial asset with no penalties.</td>
+                <td class="td-highlight">&#10004; <strong>Full Ownership.</strong> Parent owns and has control at all times. Child gets a lifetime financial asset with no penalties.</td>
               </tr>
               <tr>
                 <td><strong>Family Protection &amp; Death Benefit</strong></td>
@@ -2137,7 +2304,7 @@ html, body {{
   <section class="cfs-benefits" aria-label="Key benefits">
     <div class="cfs-section-intro" style="margin-bottom:0;">
       <p class="cfs-eyebrow">Why Families Choose This Approach</p>
-      <h2 class="cfs-h2">Multiple Strategies. Four Powerful Outcomes.</h2>
+      <h2 class="cfs-h2">One Strategy &ndash; Multiple Powerful Outcomes.</h2>
     </div>
 
     <div class="cfs-benefits-grid">
@@ -2159,6 +2326,11 @@ html, body {{
       <div class="cfs-benefit-item">
         <div class="cfs-benefit-icon" aria-hidden="true">&#128273;</div>
         <p class="cfs-benefit-label">Create Financial<br />Freedom</p>
+      </div>
+
+      <div class="cfs-benefit-item">
+        <div class="cfs-benefit-icon" aria-hidden="true">&#127919;</div>
+        <p class="cfs-benefit-label">Fund Other<br />Life Events</p>
       </div>
     </div>
   </section>
@@ -2289,7 +2461,7 @@ html, body {{
     var age = parseInt(ageSlider.value, 10);
     var years = Math.max(1, 18 - age);
     var currentSavings = parseFloat(savingsInput.value) || 0;
-    var monthly = parseFloat(monthlyInput.value) || 0;
+    var monthly = Math.max(150, parseFloat(monthlyInput.value) || 150);
     var baseCost = parseFloat(benchmarkSelect.value) || 110000;
 
     // Projected cost with 3.5% educational inflation
