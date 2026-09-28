@@ -6,13 +6,10 @@ import re
 with open('brightpath-logo.webp', 'rb') as f:
     logo_b64 = base64.b64encode(f.read()).decode('utf-8')
 
-with open('college-savings-flyer.webp', 'rb') as f:
-    flyer_b64 = base64.b64encode(f.read()).decode('utf-8')
+with open('brightpath-hero-logo.webp', 'rb') as f:
+    hero_logo_b64 = base64.b64encode(f.read()).decode('utf-8')
 
-with open('todays-plans-flyer.webp', 'rb') as f:
-    todays_plans_b64 = base64.b64encode(f.read()).decode('utf-8')
-
-print("Loaded assets: logo b64 length =", len(logo_b64), ", flyer b64 length =", len(flyer_b64), ", todays_plans b64 length =", len(todays_plans_b64))
+print("Loaded assets: logo b64 length =", len(logo_b64), ", hero_logo b64 length =", len(hero_logo_b64))
 
 # HTML Template
 html_content = f'''<!DOCTYPE html>
@@ -385,6 +382,53 @@ html, body {{
   display: flex;
   justify-content: center;
   align-items: center;
+}}
+
+#cfs-root .cfs-hero-eyebrow-row {{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+}}
+
+#cfs-root .cfs-hero-trust-badge {{
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(2,155,187,.15);
+  border: 1px solid var(--cyan-path);
+  border-radius: var(--pill);
+  padding: .35rem .85rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(.68rem, 1.8vw, .76rem);
+  font-weight: 700;
+  color: var(--cyan-path-glow);
+  white-space: nowrap;
+}}
+
+#cfs-root .cfs-hero-logo-frame {{
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,.55), 0 0 40px rgba(2,155,187,.2);
+  border: 2.5px solid rgba(212, 155, 40, 0.65);
+  background: #041426;
+  transition: transform .35s ease, box-shadow .35s ease;
+  margin: 0 auto;
+}}
+
+#cfs-root .cfs-hero-logo-frame:hover {{
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 26px 65px rgba(0,0,0,.65), 0 0 55px rgba(2,155,187,.3);
+}}
+
+#cfs-root .cfs-hero-logo-img {{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }}
 
 #cfs-root .cfs-hero-image-frame {{
@@ -1115,14 +1159,15 @@ html, body {{
 
 #cfs-root .cfs-calc-one-line {{
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(1.35rem, 2.5vw, 2.1rem);
+  font-size: clamp(1.45rem, 3.2vw, 2.4rem);
   font-weight: 900;
   color: var(--navy);
-  margin: .35rem 0 0 0;
-  line-height: 1.2;
+  margin: .4rem auto 0 auto;
+  line-height: 1.25;
+  text-align: center;
 }}
 
-@media (min-width: 1040px) {{
+@media (min-width: 860px) {{
   #cfs-root .cfs-calc-one-line {{
     white-space: nowrap;
   }}
@@ -1709,35 +1754,7 @@ html, body {{
 }}
 </style>
 
-  <!-- Brand Navigation Header -->
-  <header class="cfs-brand-bar" role="banner">
-    <div class="cfs-brand-inner">
-      <a href="#cfs-root" class="cfs-brand-logo-wrap" aria-label="BrightPath Legacy Wealth Home">
-        <div class="cfs-brand-crest-frame">
-          <img
-            src="data:image/webp;base64,{logo_b64}"
-            alt="BrightPath Legacy Wealth Crest"
-            class="cfs-brand-logo-img"
-          />
-        </div>
-        <div class="cfs-brand-wordmark">
-          <div class="cfs-brand-company-name">
-            <span class="cfs-name-bright">BRIGHT</span><span class="cfs-name-path">PATH</span>
-          </div>
-          <div class="cfs-brand-legacy-row">
-            <span class="cfs-gold-dash"></span>
-            <span class="cfs-brand-legacy-text">LEGACY WEALTH</span>
-            <span class="cfs-gold-dash"></span>
-          </div>
-          <div class="cfs-brand-motto-text">Empowering Every Child's Financial Future</div>
-        </div>
-      </a>
-      <div class="cfs-brand-badge" aria-label="Official Evaluation">
-        <span class="cfs-badge-dot" aria-hidden="true"></span>
-        <span>Official College Funding Analysis</span>
-      </div>
-    </div>
-  </header>
+
 
   <!-- Hero Section -->
   <section class="cfs-hero" aria-label="College funding comparison hero">
@@ -1745,7 +1762,13 @@ html, body {{
       
       <!-- Left Column: Headline, Copy & Action -->
       <div class="cfs-hero-content">
-        <p class="cfs-eyebrow">The Ultimate College Funding Showdown</p>
+        <div class="cfs-hero-eyebrow-row">
+          <span class="cfs-eyebrow">The Ultimate College Funding Showdown</span>
+          <span class="cfs-hero-trust-badge">
+            <span class="cfs-badge-dot" aria-hidden="true"></span>
+            <span>Official College Funding Analysis</span>
+          </span>
+        </div>
 
         <h1 class="cfs-h1">
           There&rsquo;s More Than One Way<br class="cfs-hero-break" /> to Save for College
@@ -1768,23 +1791,17 @@ html, body {{
         <p class="cfs-hero-note">Free &bull; No obligation &bull; Under 60 seconds</p>
       </div>
 
-      <!-- Right Column: Hero Image (College Savings Flyer) -->
+      <!-- Right Column: Enlarged Official BrightPath Logo Crest -->
       <div class="cfs-hero-visual">
-        <div class="cfs-hero-image-frame">
+        <div class="cfs-hero-logo-frame">
           <img
-            src="data:image/webp;base64,{flyer_b64}"
-            alt="Today's Plans Build Tomorrow's Dreams - BrightPath College Funding"
+            src="data:image/webp;base64,{hero_logo_b64}"
+            alt="BrightPath Legacy Wealth Corporation - Official Logo Crest"
             loading="eager"
-            width="540"
-            height="540"
+            width="781"
+            height="605"
+            class="cfs-hero-logo-img"
           />
-          <div class="cfs-hero-badge">
-            <span class="cfs-hero-badge-icon" aria-hidden="true">&#9733;</span>
-            <div>
-              <strong>3-Way Showdown</strong>
-              <span>529 vs Trump Acct vs Life Ins</span>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1881,27 +1898,13 @@ html, body {{
   <section class="cfs-calculator-section" id="cfs-calculator" aria-label="College Funding Showdown Calculator">
     <div class="cfs-calc-container">
       
-      <!-- Calculator Intro Side-by-Side (Desktop) -->
-      <div class="cfs-calc-intro-grid">
-        <div class="cfs-calc-intro-text">
-          <p class="cfs-eyebrow">Interactive Self-Service Analysis</p>
-          <h2 class="cfs-calc-one-line">The College Funding Showdown Calculator</h2>
-          <p class="cfs-sub" style="color:var(--grey-text); margin-top:0.75rem;">
-            Compare your family&rsquo;s current college trajectory against the 3 major options. Calculate your personalized <strong>College Funding Score</strong> and uncover your projected funding gap in 60 seconds.
-          </p>
-        </div>
-
-        <div class="cfs-calc-intro-visual">
-          <div class="cfs-calc-visual-frame">
-            <img
-              src="data:image/webp;base64,{todays_plans_b64}"
-              alt="Today's Plans Build Tomorrow's Dreams - 3-Way Showdown"
-              loading="lazy"
-              width="440"
-              height="440"
-            />
-          </div>
-        </div>
+      <!-- Calculator Section Intro (Clean, Centered, One-Line Title) -->
+      <div class="cfs-section-intro" style="margin-bottom: 2.25rem; text-align: center;">
+        <p class="cfs-eyebrow">Interactive Self-Service Analysis</p>
+        <h2 class="cfs-h2 cfs-calc-one-line">The College Funding Showdown Calculator</h2>
+        <p class="cfs-sub" style="margin: 0.75rem auto 0 auto; max-width: 720px; color: var(--grey-text); text-align: center;">
+          Compare your family&rsquo;s current college trajectory against the 3 major options. Calculate your personalized <strong>College Funding Score</strong> and uncover your projected funding gap in 60 seconds.
+        </p>
       </div>
 
       <!-- Calculator Inputs & Mandatory Verification Opt-In Card -->
