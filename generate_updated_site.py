@@ -1754,7 +1754,35 @@ html, body {{
 }}
 </style>
 
-
+  <!-- Brand Navigation Header -->
+  <header class="cfs-brand-bar" role="banner">
+    <div class="cfs-brand-inner">
+      <a href="#cfs-root" class="cfs-brand-logo-wrap" aria-label="BrightPath Legacy Wealth Home">
+        <div class="cfs-brand-crest-frame">
+          <img
+            src="data:image/webp;base64,{logo_b64}"
+            alt="BrightPath Legacy Wealth Crest"
+            class="cfs-brand-logo-img"
+          />
+        </div>
+        <div class="cfs-brand-wordmark">
+          <div class="cfs-brand-company-name">
+            <span class="cfs-name-bright">BRIGHT</span><span class="cfs-name-path">PATH</span>
+          </div>
+          <div class="cfs-brand-legacy-row">
+            <span class="cfs-gold-dash"></span>
+            <span class="cfs-brand-legacy-text">LEGACY WEALTH</span>
+            <span class="cfs-gold-dash"></span>
+          </div>
+          <div class="cfs-brand-motto-text">Empowering Every Child's Financial Future</div>
+        </div>
+      </a>
+      <div class="cfs-brand-badge" aria-label="Official Evaluation">
+        <span class="cfs-badge-dot" aria-hidden="true"></span>
+        <span>Official College Funding Analysis</span>
+      </div>
+    </div>
+  </header>
 
   <!-- Hero Section -->
   <section class="cfs-hero" aria-label="College funding comparison hero">
@@ -1762,13 +1790,7 @@ html, body {{
       
       <!-- Left Column: Headline, Copy & Action -->
       <div class="cfs-hero-content">
-        <div class="cfs-hero-eyebrow-row">
-          <span class="cfs-eyebrow">The Ultimate College Funding Showdown</span>
-          <span class="cfs-hero-trust-badge">
-            <span class="cfs-badge-dot" aria-hidden="true"></span>
-            <span>Official College Funding Analysis</span>
-          </span>
-        </div>
+        <p class="cfs-eyebrow">The Ultimate College Funding Showdown</p>
 
         <h1 class="cfs-h1">
           There&rsquo;s More Than One Way<br class="cfs-hero-break" /> to Save for College
