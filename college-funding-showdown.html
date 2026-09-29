@@ -215,16 +215,28 @@ html, body {
 }
 
 #cfs-root .cfs-brand-motto-text {
-  font-size: clamp(.62rem, 1.3vw, .72rem);
+  font-size: clamp(.58rem, 1.1vw, .68rem);
   color: var(--grey-text);
   font-style: italic;
-  margin-top: 2px;
-  line-height: 1.2;
+  margin-top: 1px;
+  line-height: 1.15;
+  display: none;
+}
+
+#cfs-root .cfs-brand-beyond-text {
+  font-family: "Georgia", serif;
+  font-size: clamp(.62rem, 1.2vw, .72rem);
+  color: var(--gold-dark);
+  font-style: italic;
+  font-weight: 700;
+  margin-top: 0px;
+  line-height: 1.15;
   display: none;
 }
 
 @media (min-width: 680px) {
-  #cfs-root .cfs-brand-motto-text {
+  #cfs-root .cfs-brand-motto-text,
+  #cfs-root .cfs-brand-beyond-text {
     display: block;
   }
 }
@@ -1767,6 +1779,7 @@ html, body {
             <span class="cfs-gold-dash"></span>
           </div>
           <div class="cfs-brand-motto-text">Empowering Every Child's Financial Future</div>
+          <div class="cfs-brand-beyond-text">from Birth and Beyond</div>
         </div>
       </a>
       <div class="cfs-brand-badge" aria-label="Official Evaluation">
