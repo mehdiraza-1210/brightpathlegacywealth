@@ -1609,7 +1609,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: .65rem;
   margin-bottom: 2rem;
 }
 
@@ -1640,12 +1640,24 @@ html, body {
   display: block;
 }
 
+/* Tight, unified typography lockup without vertical gaps */
+#cfs-root .cfs-footer-text-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 #cfs-root .cfs-footer-brand-title {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(1.4rem, 3.4vw, 1.85rem);
   font-weight: 900;
   letter-spacing: .05em;
-  margin: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.05;
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -1666,13 +1678,15 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .6rem;
-  margin-top: 2px;
+  gap: .55rem;
+  margin: 1px 0 0 0 !important;
+  padding: 0 !important;
+  line-height: 1;
 }
 
 #cfs-root .cfs-footer-gold-dash {
   display: inline-block;
-  width: 22px;
+  width: 20px;
   height: 2px;
   background: linear-gradient(90deg, var(--gold), #f5cb5c);
   border-radius: 1px;
@@ -1680,28 +1694,34 @@ html, body {
 
 #cfs-root .cfs-footer-corp-sub {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(.78rem, 2vw, .88rem);
+  font-size: clamp(.74rem, 1.8vw, .84rem);
   font-weight: 800;
-  letter-spacing: .18em;
+  letter-spacing: .16em;
   color: #ffffff;
   text-transform: uppercase;
+  line-height: 1;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #cfs-root .cfs-footer-motto-primary {
-  font-size: clamp(.88rem, 2vw, .98rem);
+  font-size: clamp(.82rem, 1.8vw, .92rem);
   color: #ffffff;
   font-style: italic;
-  margin: .35rem 0 0 0;
-  line-height: 1.5;
+  margin: 2px 0 0 0 !important;
+  padding: 0 !important;
+  line-height: 1.25;
 }
 
 #cfs-root .cfs-footer-motto-secondary {
   font-family: "Georgia", serif;
-  font-size: clamp(.95rem, 2.2vw, 1.15rem);
+  font-size: clamp(.92rem, 2vw, 1.08rem);
   color: var(--gold-light);
   font-style: italic;
   font-weight: 600;
-  margin: .15rem 0 0 0;
+  margin: 1px 0 0 0 !important;
+  padding: 0 !important;
+  line-height: 1.2;
   text-shadow: 0 2px 6px rgba(0,0,0,.4);
 }
 
@@ -2356,20 +2376,22 @@ html, body {
           class="cfs-footer-logo"
         />
       </div>
-      <div class="cfs-footer-brand-title">
-        <span class="cfs-footer-name-bright">BRIGHT</span><span class="cfs-footer-name-path">PATH</span>
+      <div class="cfs-footer-text-lockup">
+        <div class="cfs-footer-brand-title">
+          <span class="cfs-footer-name-bright">BRIGHT</span><span class="cfs-footer-name-path">PATH</span>
+        </div>
+        <div class="cfs-footer-legacy-row">
+          <span class="cfs-footer-gold-dash"></span>
+          <span class="cfs-footer-corp-sub">LEGACY WEALTH</span>
+          <span class="cfs-footer-gold-dash"></span>
+        </div>
+        <p class="cfs-footer-motto-primary">
+          Empowering Every Child&rsquo;s Financial Future
+        </p>
+        <p class="cfs-footer-motto-secondary">
+          from Birth and Beyond
+        </p>
       </div>
-      <div class="cfs-footer-legacy-row">
-        <span class="cfs-footer-gold-dash"></span>
-        <span class="cfs-footer-corp-sub">LEGACY WEALTH</span>
-        <span class="cfs-footer-gold-dash"></span>
-      </div>
-      <p class="cfs-footer-motto-primary">
-        Empowering Every Child&rsquo;s Financial Future
-      </p>
-      <p class="cfs-footer-motto-secondary">
-        from Birth and Beyond
-      </p>
     </div>
 
     <p class="cfs-footer-disc">
